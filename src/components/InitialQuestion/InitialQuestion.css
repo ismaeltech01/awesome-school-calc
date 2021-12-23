@@ -1,0 +1,27 @@
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdown-content {
+  color: black;
+  position: absolute;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+}
+
+#calc-option {
+  color: black;
+  text-decoration: none;
+}
+
+#dropdown-btn {
+  width: 50px;
+  height: 50px;
+}
+
+#dropdown-btn:hover #dropdown-content {
+  display: block;
+}
+

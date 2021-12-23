@@ -1,9 +1,12 @@
 import React from "react"; 
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
     <header>
-      <h1>Awesome School Calc</h1>
+      <NavLink to="/">
+        <h1>Awesome School Calc</h1>
+      </NavLink>
     </header>
   );
 }
