@@ -18,7 +18,9 @@ export default function calculateGradeNeeded(semAvg, numEffSemExam, desSemAvg) {
     console.log(semAvgPnts);
     console.log(pntsNeeded);
     console.log(pntsNeeded / percEffSemExam);
-    return pntsNeeded / percEffSemExam; //Calculates needed grade in order to attain desired grade
+    let examGradeNeeded = pntsNeeded / percEffSemExam;
+    let roundedGrade = Math.ceil(examGradeNeeded * 100) / 100; //makes sure all results are rounded to the nearest hundredth
+    return roundedGrade; //Calculates needed grade in order to attain desired grade
   }
 }
 

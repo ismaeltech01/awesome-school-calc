@@ -2,9 +2,13 @@ import React from "react";
 import { areAllVarsEmpty } from "./logic";
 
 export default function Results(props) {
-  const {semesterAvg, percentEffect, desiredGrade, gradeNeeded} = props;
+  const {usrSubmit, semesterAvg, percentEffect, desiredGrade, gradeNeeded} = props;
 
-  if (!areAllVarsEmpty(semesterAvg, percentEffect, desiredGrade, gradeNeeded)) {
+  if (areAllVarsEmpty(semesterAvg, percentEffect, desiredGrade, gradeNeeded) && usrSubmit) {
+    return (
+      <p>You submitted invalid data! Please double check that you filled out ALL of the input fields.</p>
+    );
+  } else if (usrSubmit && gradeNeeded !== 0) {
     return (
       <p>To get a <strong>{desiredGrade}</strong> final semester average, you will need a score of atleast <strong>{gradeNeeded}</strong> on the semester exam.</p>
     );
@@ -14,7 +18,7 @@ export default function Results(props) {
     );
   } else {
     return (
-      <p>Fill out all of the fields above to get a result.</p>
+      <p>Fill out all of the fields above and click the Submit button to get a result.</p>
     );
   }
 }
