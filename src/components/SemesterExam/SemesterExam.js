@@ -47,18 +47,18 @@ export default function SemesterExam() {
       <ul>
         <li>
           <label htmlFor="semester-average">Current Semester Average:</label> 
-          <button type="button" id="help-button" name="semester-average-hp" onClick={handleClick}>?</button>
-          <input type="number" id="semester-average" min="0" max="110" onChange={handleChange} value={semesterAvg}></input>
+          <button type="button" id="help-button" name="semester-average-hp" onClick={handleClick} title="Help">?</button>
+          <input type="number" id="semester-average" min="0" max="110" onChange={handleChange} value={semesterAvg} required></input>
         </li>
         <li>
           <label htmlFor="percent-effect">Percentage effect of semester exam on final semester average:</label> 
-          <button type="button" id="help-button" name="percent-effect-hp" onClick={handleClick}>?</button>
-          <input type="number" id="percent-effect" min="0" max="100" onChange={handleChange} value={percentEffect}></input>
+          <button type="button" id="help-button" name="percent-effect-hp" onClick={handleClick} title="Help">?</button>
+          <input type="number" id="percent-effect" min="0" max="100" onChange={handleChange} value={percentEffect} required></input>
         </li>
         <li>
           <label htmlFor="desired-average">Desired Final semester average:</label> 
-          <button type="button" id="help-button" name="desired-average-hp" onClick={handleClick}>?</button>
-          <input type="number" id="desired-average" min="0" max="110" onChange={handleChange} value={desiredGrade}></input>
+          <button type="button" id="help-button" name="desired-average-hp" onClick={handleClick} title="Help">?</button>
+          <input type="number" id="desired-average" min="0" max="110" onChange={handleChange} value={desiredGrade} required></input>
         </li>
       </ul>
       <button type="submit" id="submit-button">Submit</button>
