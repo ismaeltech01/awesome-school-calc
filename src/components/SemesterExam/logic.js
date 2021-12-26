@@ -23,14 +23,3 @@ export default function calculateGradeNeeded(semAvg, numEffSemExam, desSemAvg) {
     return roundedGrade; //Calculates needed grade in order to attain desired grade
   }
 }
-
-//used to check if all of the arguments are 'empty' states
-export function areAllVarsEmpty() {
-  for (let index = 0; index < arguments.length; index++) {
-    if (arguments[index] === '' || arguments[index] === undefined || arguments[index] === null) {
-      return true;
-    }
-  }
-
-  return false;
-}
