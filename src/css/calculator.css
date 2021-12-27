@@ -5,3 +5,60 @@
 form ul li {
   list-style: none;
 }
+
+button {
+  text-align: center;
+}
+
+.calculator-body input {
+  padding: .4em;
+}
+
+.label-and-help-container {
+  padding: 1em;
+}
+
+#help-button {
+  background-color: var(--primary-col);
+  color: var(--secondary-col);
+  box-shadow: .1em .1em .2em var(--shadow-col);
+  border: none;
+  border-radius: 1em;
+  cursor: help;
+  padding: .5em 1em;
+  margin: 0em 1em;
+}
+
+#submit-button {
+  background-color: var(--primary-col);
+  color: var(--secondary-col);
+  font-weight: 600;
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em;
+  box-shadow: .1em .1em .3em var(--shadow-col);
+  border: none;
+}
+
+#submit-button:hover {
+  cursor: pointer;
+}
+
+.results {
+  font-weight: 500;
+  padding: 5em;
+}
+
+.submit-result {
+  background-color: var(--quaternary-col);
+  color: var(--secondary-col);
+}
+
+.no-submit-result {
+  background-color: var(--shadow-col);
+  color: var(--secondary-col);
+}
+
+.results strong {
+  font-weight: 800;
+}

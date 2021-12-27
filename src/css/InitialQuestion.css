@@ -4,32 +4,38 @@
 
 .initial-question-heading {
   color: var(--primary-col);
+  padding: 1em;
 }
 
-#dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-#dropdown-content {
-  color: black;
-  position: absolute;
-  z-index: 1;
-  width: 10px;
-  height: 10px;
+#calc-types {
+  padding: 1em 1em 2em;
 }
 
 #calc-option {
-  color: black;
-  text-decoration: none;
+  color: var(--secondary-col);
+  padding: 1em;
+  margin: 0em 1em;
+  background-color: var(--primary-col);
+  border-radius: 1.5em;
+  font-weight: 500;
+  box-shadow: .1em .1em .3em var(--shadow-col);
 }
 
-#dropdown-btn {
-  width: 50px;
-  height: 50px;
+/* TODO: use this code for effect later on
+
+#calc-types a:link {
+  
 }
 
-#dropdown-btn:hover #dropdown-content {
-  display: block;
+#calc-types a:visited {
+
 }
 
+#calc-types a:hover {
+
+}
+
+#calc-types a:active {
+
+}
+*/

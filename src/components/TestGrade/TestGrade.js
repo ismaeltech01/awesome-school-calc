@@ -24,7 +24,7 @@ export default function TestGrade() {
   }
 
   const handleClick = (e) => {
-    if (e.target.id === 'help-btn') {
+    if (e.target.id === 'help-button') {
       if (e.target.name === 'current-average-hp')
         alert('Your current class average before the test is taken. \n\nExample: I had a 95 in Math class the day before the test.');
       if (e.target.name === 'test-weight-hp')
@@ -46,22 +46,28 @@ export default function TestGrade() {
       <form onSubmit={handleSubmit}>
         <ul>
           <li>
-            <label htmlFor="current-average">Current Class Average:</label> 
-            <button type="button" id="help-btn" name="current-average-hp" onClick={handleClick} title="Help">?</button>
+            <div className="label-and-help-container">
+              <label htmlFor="current-average">Current Class Average:</label> 
+              <button type="button" id="help-button" name="current-average-hp" onClick={handleClick} title="Help">?</button>
+            </div>
             <input type="number" id="current-average" min="0" max="110" onChange={handleChange} value={classAvg} required></input>
           </li>
           <li>
-            <label htmlFor="test-weight">Overall weight of test on grade:</label> 
-            <button type="button" id="help-btn" name="test-weight-hp" onClick={handleClick} title="Help">?</button>
+            <div className="label-and-help-container">
+              <label htmlFor="test-weight">Overall weight of test on grade:</label> 
+              <button type="button" id="help-button" name="test-weight-hp" onClick={handleClick} title="Help">?</button>
+            </div>
             <input type="number" id="test-weight" min="0" max="100" onChange={handleChange} value={testWeight} required></input>
           </li>
           <li>
-            <label htmlFor="desired-average">Desired class average after test:</label> 
-            <button type="button" id="help-btn" name="desired-average-hp" onClick={handleClick} title="Help">?</button>
+            <div className="label-and-help-container">
+              <label htmlFor="desired-average">Desired class average after test:</label> 
+              <button type="button" id="help-button" name="desired-average-hp" onClick={handleClick} title="Help">?</button>
+            </div>
             <input type="number" id="desired-average" min="0" max="110" onChange={handleChange} value={desiredClassAvg} required></input>
           </li>
         </ul>
-        <button type="submit" id="submit-btn">Submit</button>
+        <button type="submit" id="submit-button">Submit</button>
       </form> 
       <Results usrSubmit={usrSubmit} classAvg={classAvg} testWeight={testWeight} desiredClassAvg={desiredClassAvg} gradeNeeded={gradeNeeded}/>
     </div>
