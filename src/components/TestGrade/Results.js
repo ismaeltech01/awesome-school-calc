@@ -12,11 +12,11 @@ export default function Results(props) {
       );
     } else if (gradeNeeded === 0) {
       return (
-        <p>To get a <strong>{desiredClassAvg}</strong> class average, you will need a score of <strong>{gradeNeeded}</strong> on the test.</p>
+        <p>To get a <strong>{desiredClassAvg}</strong> class average... you don't have to do anything! You can score a <strong>0</strong> on the test and still get your desired grade. (I would recommend still taking the test, just saying.)</p>
       );
     } else if (gradeNeeded !== 0) {
       return (
-        <p>To get a <strong>{desiredClassAvg}</strong> class average... you don't have to do anything! You can score a <strong>0</strong> on the test and still get your desired grade. (I would recommend still taking the test, just saying.)</p>
+        <p>To get a <strong>{desiredClassAvg}</strong> class average, you will need a score of <strong>{gradeNeeded}</strong> on the test.</p>
       );
     } else {
       return (

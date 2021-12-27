@@ -1,6 +1,6 @@
+import '../css/InitialQuestion.css';
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./InitialQuestion.css";
 
 export default function InitialQuestion() {
   return (
