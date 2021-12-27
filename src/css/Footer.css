@@ -4,11 +4,13 @@ footer {
 }
 
 .author-txt {
+  font-size: 1.2em;
   color: var(--secondary-col);
   margin: .5em 1em;
 }
 
 .license-txt {
+  font-size: .9em;
   color: var(--secondary-col);
   margin: .5em 1em;
 }
