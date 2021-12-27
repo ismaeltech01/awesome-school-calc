@@ -1,3 +1,11 @@
+.initial-question-body {
+  background-color: var(--tertiary-col);
+}
+
+.initial-question-heading {
+  color: var(--primary-col);
+}
+
 #dropdown {
   position: relative;
   display: inline-block;

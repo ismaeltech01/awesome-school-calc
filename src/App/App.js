@@ -9,7 +9,7 @@ function App() {
         <Header/>
         <InitialQuestion/>
         <Routes>
-          <Route path="/" element={<h2>Select a calculator type to get started.</h2>}/>
+          <Route path="/" element={<div></div>}/>
           <Route path="/semester-exam" element={<SemesterExam/>}/>
           <Route path="/test-grade" element={<TestGrade/>}/>
         </Routes>

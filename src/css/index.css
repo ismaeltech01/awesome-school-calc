@@ -1,4 +1,20 @@
+/* Contains global styling applicable to all components */
+
+@charset "UTF-8";
+
+:root {
+  --primary-col: rgb(10, 120, 350);
+  --secondary-col: rgb(300, 300, 300);
+  --tertiary-col: rgb(230, 230, 230);
+  --calc-txt-col: rgb(10, 10, 10);
+  --link-col: rgb(100, 100, 100);
+  --link-visited-col: rgb(192, 192, 192);
+  --link-hover-col: rgb(150, 150, 150);
+  --link-active-col: rgb(70, 70, 100);
+}
+
 body {
+  background-color: var(--primary-col);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +26,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: var(--link-col);
+}
+
+a:visited {
+  color: var(--link-visited-col);
+}
+
+a:hover {
+  color: var(--link-hover-col);
+}
+
+a:active {
+  color: var(--link-active-col);
 }

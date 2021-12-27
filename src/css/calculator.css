@@ -1,0 +1,7 @@
+.calculator-body {
+  background-color: var(--tertiary-col);
+}
+
+form ul li {
+  list-style: none;
+}

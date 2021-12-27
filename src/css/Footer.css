@@ -1,0 +1,39 @@
+footer {
+  background-color: var(--primary-col);
+  padding: 3em;
+}
+
+.author-txt {
+  color: var(--secondary-col);
+  margin: .5em 1em;
+}
+
+.license-txt {
+  color: var(--secondary-col);
+  margin: .5em 1em;
+}
+
+.notice-txt {
+  color: var(--secondary-col);
+  margin: 2em 1em .2em;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:link {
+  color: var(--link-col);
+}
+
+footer a:visited {
+  color: var(--link-visited-col);
+}
+
+footer a:hover {
+  color: var(--link-hover-col);
+}
+
+footer a:active {
+  color: var(--link-active-col);
+}

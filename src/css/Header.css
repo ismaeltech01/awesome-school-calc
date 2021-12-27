@@ -1,0 +1,13 @@
+header {
+  background-color: var(--primary-col);
+  padding: 1.5em;
+}
+
+.header-txt {
+  color: var(--secondary-col);
+}
+
+.header-sup-txt {
+  color: var(--tertiary-col);
+  font-size: .7em;
+}

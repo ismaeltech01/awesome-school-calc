@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <NavLink to="/">
-        <h1 class="header-txt">Awesome School Calc  <sup class="header-sup-txt">v0.2.0 Alpha</sup></h1>
+        <h1 className="header-txt">Awesome School Calc  <sup className="header-sup-txt">v0.2.0 Alpha</sup></h1>
       </NavLink>
     </header>
   );
