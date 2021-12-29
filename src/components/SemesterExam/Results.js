@@ -1,16 +1,11 @@
 //SemesterExam results
 import React from "react";
-import areAllVarsEmpty from "./logic";
 
 export default function Results(props) {
   const {usrSubmit, semesterAvg, percentEffect, desiredGrade, gradeNeeded} = props;
 
   if (usrSubmit) {
-    if (areAllVarsEmpty(semesterAvg, percentEffect, desiredGrade, gradeNeeded)) {
-      return (
-        <p className="results submit-result">You submitted invalid data! Please double check that you filled out ALL of the input fields.</p>
-      );
-    } else if (gradeNeeded !== 0) {
+    if (gradeNeeded !== 0) {
       return (
         <p className="results submit-result">To get a <strong>{desiredGrade}</strong> final semester average, you will need a score of atleast <strong>{gradeNeeded}</strong> on the semester exam.</p>
       );
@@ -20,7 +15,7 @@ export default function Results(props) {
       );
     } else {
       return (
-        <p className="results submit-result">Uncaught Error. Please try again. If error persists, contact the developer.</p>
+        <p className="results submit-result">Uncaught Error. Make sure that ALL of the input fields are filled and try again. If the error persists, contact the developer.</p>
       );
     }
   } else {
