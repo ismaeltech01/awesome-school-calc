@@ -1,3 +1,5 @@
+import { roundUpwardsToHundredths } from "../functions";
+
 export default function calculateTestScoreNeeded(classAvg, testWeight, desiredAvg) {
   let classAvgWeight = (100 - testWeight) / 100;
   let classAvgPnts = classAvg * classAvgWeight;
@@ -8,7 +10,7 @@ export default function calculateTestScoreNeeded(classAvg, testWeight, desiredAv
     return 0;
   } else {
     let testWeightDecimal = testWeight / 100;
-    let testGradeNeeded = pntsNeeded / testWeightDecimal;
+    let testGradeNeeded = roundUpwardsToHundredths(pntsNeeded / testWeightDecimal);
     return testGradeNeeded;
   }
 }

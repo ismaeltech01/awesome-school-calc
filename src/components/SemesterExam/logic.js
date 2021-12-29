@@ -1,3 +1,5 @@
+import { roundUpwardsToHundredths } from "../functions";
+
 export default function calculateGradeNeeded(semAvg, numEffSemExam, desSemAvg) {
   console.log(desSemAvg);
   let percEffSemExam = numEffSemExam / 100;
@@ -19,7 +21,7 @@ export default function calculateGradeNeeded(semAvg, numEffSemExam, desSemAvg) {
     console.log(pntsNeeded);
     console.log(pntsNeeded / percEffSemExam);
     let examGradeNeeded = pntsNeeded / percEffSemExam;
-    let roundedGrade = Math.ceil(examGradeNeeded * 100) / 100; //makes sure all results are rounded to the nearest hundredth
+    let roundedGrade = roundUpwardsToHundredths(examGradeNeeded); //makes sure all results are rounded to the nearest hundredth
     return roundedGrade; //Calculates needed grade in order to attain desired grade
   }
 }
