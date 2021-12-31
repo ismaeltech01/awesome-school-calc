@@ -9,6 +9,7 @@ export default function InitialQuestion() {
       <div id="calc-types">
         <NavLink id="calc-option" to="/semester-exam">Semester Exam</NavLink>
         <NavLink id="calc-option" to="/test-grade">Test Grade</NavLink>
+        <NavLink id='calc-option' to='/gpa'>GPA Calc</NavLink>
       </div>
     </div>
   );
