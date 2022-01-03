@@ -1,3 +1,4 @@
+import '../css/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPADefaultWeightedCalc, GPADefaultUnWeightedCalc, GPACustomCalc} from '../components';
 

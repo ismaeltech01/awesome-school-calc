@@ -1,4 +1,3 @@
-import '../../css/SemesterExam.css';
 import React, { useState } from "react";
 import Results from "./Results";
 import calculateGradeNeeded from "./logic";
