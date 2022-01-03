@@ -7,8 +7,11 @@
   padding: 1em;
 }
 
-#calc-types {
+#calc-types-container {
   padding: 1em 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #calc-option {
@@ -21,21 +24,22 @@
   box-shadow: .1em .1em .3em var(--shadow-col);
 }
 
-/* TODO: use this code for effect later on
-
-#calc-types a:link {
-  
+#calc-option a:link {
+  background-color: var(--primary-col);
 }
 
-#calc-types a:visited {
-
+#calc-option a:visited {
+  background-color: var(--primary-col);
 }
 
-#calc-types a:hover {
-
+#calc-option:hover {
+  background-color: linear-gradient(300, --primary-col, --tertiary-col);
 }
 
-#calc-types a:active {
-
+#calc-option a:active {
+  background-color: var(--quaternary-col);
 }
-*/
+
+#calc-option.active {
+  background-color: var(--quaternary-col);
+}
