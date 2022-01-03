@@ -1,7 +1,7 @@
 //GPA results
 import React from "react";
 
-export default function Results() {
+export default function Results(props) {
   const {usrSubmit, classAvg, testWeight, desiredClassAvg, gradeNeeded} = props;
 
   if (usrSubmit) {

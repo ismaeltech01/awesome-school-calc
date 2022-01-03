@@ -3,3 +3,7 @@ export {default as Footer} from "./Footer";
 export {default as InitialQuestion} from "./InitialQuestion";
 export {default as SemesterExam} from "./SemesterExam/SemesterExam";
 export {default as TestGrade} from "./TestGrade/TestGrade";
+export {default as GPACalc} from "./GPA/GPACalc";
+export {default as GPADefaultWeightedCalc} from "./GPA/GPADefaultWeightedCalc";
+export {default as GPADefaultUnWeightedCalc} from "./GPA/GPADefaultUnWeightedCalc";
+export {default as GPACustomCalc} from "./GPA/GPACustomCalc";
