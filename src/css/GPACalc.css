@@ -1,0 +1,43 @@
+@import 'calculator.css';
+
+.gpa-calc-types-container {
+  padding: .5em 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gpa-calc-option {
+  background-color: var(--primary-col);
+  padding: 1em;
+}
+
+#gpa-calc-option {
+  color: var(--secondary-col);
+  padding: 1em;
+  margin: 0em 1em;
+  background-color: var(--primary-col);
+  border-radius: 1.5em;
+  font-weight: 500;
+  box-shadow: .1em .1em .3em var(--shadow-col);
+}
+
+#gpa-calc-option a:link {
+  background-color: var(--primary-col);
+}
+
+#gpa-calc-option a:visited {
+  background-color: var(--primary-col);
+}
+
+#gpa-calc-option:hover {
+  background-color: var(--primary-col);
+}
+
+#gpa-calc-option a:active {
+  background-color: var(--quaternary-col);
+}
+
+#gpa-calc-option.active {
+  background-color: var(--quaternary-col);
+}
