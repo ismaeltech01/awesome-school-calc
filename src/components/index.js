@@ -4,6 +4,6 @@ export {default as InitialQuestion} from "./InitialQuestion";
 export {default as SemesterExam} from "./SemesterExam/SemesterExam";
 export {default as TestGrade} from "./TestGrade/TestGrade";
 export {default as GPACalc} from "./GPA/GPACalc";
-export {default as GPADefaultWeightedCalc} from "./GPA/GPADefaultWeightedCalc";
-export {default as GPADefaultUnWeightedCalc} from "./GPA/GPADefaultUnWeightedCalc";
+export {default as GPAWeightedCalc} from "./GPA/GPAWeightedCalc";
+export {default as GPAUnWeightedCalc} from "./GPA/GPAUnWeightedCalc";
 export {default as GPACustomCalc} from "./GPA/GPACustomCalc";

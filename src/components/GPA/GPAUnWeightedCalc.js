@@ -2,27 +2,21 @@ import React from "react";
 import { useState } from "react/cjs/react.development";
 import Results from "./Results";
 
-export default function GPADefaultWeightedCalc() {
+export default function GPAUnWeightedCalc() {
   //input field variables
   const [currentGPA, setCurrentGPA] = useState('');
   const [currentCredits, setCurrentCredits] = useState('');
   const [desiredGPA, setDesiredGPA] = useState('');
-  const [nextSemesterCredits, setNextSemesterCredits] = useState('');
 
   //Final result variables
-  const [usrSubmit, setUsrSubmit] = useState('');
 
   const handleChange = (e) => {
-    if (usrSubmit)
-      setUsrSubmit(false);
     if (e.target.id === 'current-gpa')
       setCurrentGPA(e.target.value);
     if (e.target.id === 'current-credits')
       setCurrentCredits(e.target.value);
     if (e.target.id === 'desired-gpa')
       setDesiredGPA(e.target.value);
-    if (e.target.id === 'next-semester-credits')
-      setNextSemesterCredits(e.target.value);
   }
   
   const handleClick = (e) => {
@@ -43,9 +37,7 @@ export default function GPADefaultWeightedCalc() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setUsrSubmit(true);
+    
   }
 
   return (
@@ -58,36 +50,28 @@ export default function GPADefaultWeightedCalc() {
               <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
               <button type="button" id="help-button" name="current-gpa-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="current-gpa" min="0" max="5.0" onChange={handleChange} value={currentGPA} step="0.1" required></input>
+            <input type="number" id="current-gpa" min="0" max="4" onChange={handleChange} value={currentGPA} step="0.1" required></input>
           </li>
           <li>
             <div className="label-and-help-container">
               <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
               <button type="button" id="help-button" name="current-gpa-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="current-gpa" min="0" max="5.0" onChange={handleChange} value={currentGPA} step="0.1" required></input>
+            <input type="number" id="current-gpa" min="0" max="4" onChange={handleChange} value={currentGPA} step="0.1" required></input>
           </li>
           <li>
             <div className="label-and-help-container">
               <label className="txt-field-label" htmlFor="current-credits">Current amount of credits earned:</label>
               <button type="button" id="help-button" name="current-credits-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="current-credits" min="0" max="200.0" onChange={handleChange} value={currentCredits} step="
-            0.5" required></input>
+            <input type="number" id="current-credits" min="0" max="4" onChange={handleChange} value={currentCredits} required></input>
           </li>
           <li>
             <div className="label-and-help-container">
               <label className="txt-field-label" htmlFor="desired-gpa">Desired GPA:</label>
               <button type="button" id="help-button" name="desired-gpa-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="desired-gpa" min="0" max="5.0" onChange={handleChange} value={desiredGPA} step="0.1" required></input>
-          </li>
-          <li>
-            <div className="label-and-help-container">
-              <label className="txt-field-label" htmlFor="next-semester-credits">Credits you will take next semester:</label>
-              <button type="button" id="help-button" name="next-semester-credits-hp" onClick={handleClick} title="Help">?</button>
-            </div>
-            <input type="number" id="next-semester-credits" min="0" max="20.0" onChange={handleChange} value={nextSemesterCredits} step="0.5" required></input>
+            <input type="number" id="desired-gpa" min="0" max="100" onChange={handleChange} value={desiredGPA} step="0.1" required></input>
           </li>
         </ul>
         <button type="submit" id="submit-button">Submit</button>

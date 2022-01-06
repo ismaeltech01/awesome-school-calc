@@ -30,8 +30,8 @@ export default function GPACalc() {
         <button type="button" id="help-button" name="gpa-calc-type-hp" onClick={handleClick} title="Help">?</button>
       </div>
       <div className="gpa-calc-types-container">
-        <NavLink id="gpa-calc-option" to="/gpa/default/weighted">Default (Weighted GPA)</NavLink>
-        <NavLink id="gpa-calc-option" to="/gpa/default/un-weighted">Default (Un-Weighted GPA)</NavLink>
+        <NavLink id="gpa-calc-option" to="/gpa/weighted">Default (Weighted GPA)</NavLink>
+        <NavLink id="gpa-calc-option" to="/gpa/un-weighted">Default (Un-Weighted GPA)</NavLink>
         <NavLink id="gpa-calc-option" to="/gpa/custom">Custom</NavLink>
       </div>
     </div>
