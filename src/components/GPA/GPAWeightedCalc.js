@@ -9,7 +9,8 @@ export default function GPAWeightedCalc() {
   const [nextSemesterCredits, setNextSemesterCredits] = useState('');
 
   //Final result variables
-  const [usrSubmit, setUsrSubmit] = useState('');
+  const [usrSubmit, setUsrSubmit] = useState(false);
+  const [gradeNeededEachClass, setGradeNeededEachClass] = useState('');
 
   const handleChange = (e) => {
     if (usrSubmit)
@@ -61,18 +62,10 @@ export default function GPAWeightedCalc() {
           </li>
           <li>
             <div className="label-and-help-container">
-              <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
-              <button type="button" id="help-button" name="current-gpa-hp" onClick={handleClick} title="Help">?</button>
-            </div>
-            <input type="number" id="current-gpa" min="0" max="5.0" onChange={handleChange} value={currentGPA} step="0.1" required></input>
-          </li>
-          <li>
-            <div className="label-and-help-container">
               <label className="txt-field-label" htmlFor="current-credits">Current amount of credits earned:</label>
               <button type="button" id="help-button" name="current-credits-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="current-credits" min="0" max="200.0" onChange={handleChange} value={currentCredits} step="
-            0.5" required></input>
+            <input type="number" id="current-credits" min="0" max="200.0" onChange={handleChange} value={currentCredits} step="0.5" required></input>
           </li>
           <li>
             <div className="label-and-help-container">
@@ -86,12 +79,12 @@ export default function GPAWeightedCalc() {
               <label className="txt-field-label" htmlFor="next-semester-credits">Credits you will take next semester:</label>
               <button type="button" id="help-button" name="next-semester-credits-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="next-semester-credits" min="0" max="20.0" onChange={handleChange} value={nextSemesterCredits} step="0.5" required></input>
+            <input type="number" id="next-semester-credits" min="0" max="30.0" onChange={handleChange} value={nextSemesterCredits} step="0.5" required></input>
           </li>
         </ul>
         <button type="submit" id="submit-button">Submit</button>
       </form>
-      <Results/>
+      <Results desiredGPA={desiredGPA} gradeNeededEachClass={gradeNeededEachClass} usrSubmit={usrSubmit}/>
     </div>
   );
 }

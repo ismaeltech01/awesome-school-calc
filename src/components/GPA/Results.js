@@ -2,16 +2,16 @@
 import React from "react";
 
 export default function Results(props) {
-  const {usrSubmit, classAvg, testWeight, desiredClassAvg, gradeNeeded} = props;
+  const {usrSubmit, desiredGPA, gradeNeededEachClass} = props;
 
   if (usrSubmit) {
-    if (gradeNeeded === 0) {
+    if (gradeNeededEachClass === 0) {
       return (
-        <p className="results submit-result">To get a <strong>{desiredClassAvg}</strong> class average... you don't have to do anything! You can score a <strong>0</strong> on the test and still get your desired grade. (I would recommend still taking the test, just saying.)</p>
+        <p className="results submit-result"><p className="aside-txt">How in the world did you get to this result? You must be some super mastermind... Or you just put in random numbers into the calculator to see what you get. Anyway here is your result:</p> To get a <strong>{desiredGPA}</strong> class average... you don't have to do anything! You can score a <strong>0</strong> on all of your classes and still get a GPA of <strong>{desiredGPA}</strong>. (I would still recommend at least getting a passing grade, just saying.)</p>
       );
-    } else if (gradeNeeded !== 0) {
+    } else if (gradeNeededEachClass !== 0) {
       return (
-        <p className="results submit-result">To get a <strong>{desiredClassAvg}</strong> class average, you will need a score of <strong>{gradeNeeded}</strong> on the test.</p>
+        <p className="results submit-result">To get a <strong>{desiredGPA}</strong> GPA, you will need a grade of at least <strong>{gradeNeededEachClass}</strong> in every class.</p>
       );
     } else {
       return (
