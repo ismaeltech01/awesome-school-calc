@@ -25,13 +25,14 @@ export default function GPACalc() {
 
   return (
     <div className="calculator-body">
+      <h2 className="recommended-gpa-calc-notice"> Note: For more accurate results, use the <strong>Custom</strong> calculator.</h2>
       <div className="label-and-help-container">
         <label className="txt-field-label" htmlFor="gpa-calc-type">Select GPA calculator type:</label>
         <button type="button" id="help-button" name="gpa-calc-type-hp" onClick={handleClick} title="Help">?</button>
       </div>
       <div className="gpa-calc-types-container">
-        <NavLink id="gpa-calc-option" to="/gpa/weighted">Default (Weighted GPA)</NavLink>
-        <NavLink id="gpa-calc-option" to="/gpa/un-weighted">Default (Un-Weighted GPA)</NavLink>
+        <NavLink id="gpa-calc-option" to="/gpa/weighted">Weighted GPA</NavLink>
+        <NavLink id="gpa-calc-option" to="/gpa/un-weighted">Un-Weighted GPA</NavLink>
         <NavLink id="gpa-calc-option" to="/gpa/custom">Custom</NavLink>
       </div>
     </div>
