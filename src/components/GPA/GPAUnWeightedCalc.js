@@ -60,7 +60,7 @@ export default function GPAWeightedCalc() {
               <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
               <button type="button" id="help-button" name="current-gpa-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="current-gpa" min="2" max="4.0" onChange={handleChange} value={currentGPA} step="0.1" required></input>
+            <input type="number" id="current-gpa" min="2" max="4.0" onChange={handleChange} value={currentGPA} step="0.05" required></input>
           </li>
           <li>
             <div className="label-and-help-container">
@@ -74,7 +74,7 @@ export default function GPAWeightedCalc() {
               <label className="txt-field-label" htmlFor="desired-gpa">Desired GPA:</label>
               <button type="button" id="help-button" name="desired-gpa-hp" onClick={handleClick} title="Help">?</button>
             </div>
-            <input type="number" id="desired-gpa" min="2" max="4.0" onChange={handleChange} value={desiredGPA} step="0.1" required></input>
+            <input type="number" id="desired-gpa" min="2" max="4.0" onChange={handleChange} value={desiredGPA} step="0.05" required></input>
           </li>
           <li>
             <div className="label-and-help-container">
