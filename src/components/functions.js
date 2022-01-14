@@ -15,3 +15,15 @@ export function roundUpwardsToHundredths(num) {
   let roundedNum = Math.ceil(num * 100) / 100;
   return roundedNum;
 }
+
+export function roundToHundredths(num) {
+  return Math.round(num * 100) / 100;
+}
+
+export function parseStrToNum(...args) {
+  return args.map(arg => {
+    //if (arg.indexOf('.') !== -1)
+     //return parseInt(arg);
+    return parseFloat(arg);
+  });
+}
