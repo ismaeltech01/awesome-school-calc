@@ -1,4 +1,4 @@
-import { roundToHundredths, parseStrToNum } from "../functions";
+import { roundToHundredths, floorToTenths, parseStrToNum } from "../functions";
 
 const weightedGPAScale = [
   {grade: 100, gpa: 5.0},
@@ -49,7 +49,7 @@ const unWeightedGPAScale = [
 ];
 
 export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nextSemClasses) {
-  [weighted, curGPA, classesTaken, desGPA, nextSemClasses] = parseStrToNum(weighted, curGPA, classesTaken, desGPA, nextSemClasses);
+  [curGPA, classesTaken, desGPA, nextSemClasses] = parseStrToNum(curGPA, classesTaken, desGPA, nextSemClasses);
 
   console.log(`Classes Taken: ${classesTaken}, Next Sem classes: ${nextSemClasses}`);
 
@@ -75,32 +75,45 @@ export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nex
 
 function convertGPAToGrade(gpa, weighted) {
   gpa = roundToHundredths(gpa); //in case the gpa given is not rounded to hundredths
+  let floorGPA = floorToTenths(gpa);
   console.log(`Rounded GPA: ${gpa}`);
+  console.log(`Floor GPA: ${floorGPA}`);
   
   if (gpa >= 2.0) {
-    if (weighted) {
-      let grade = weightedGPAScale.find(obj =>  obj.gpa == gpa).grade;
-      
-      if (grade === undefined) {
-        let floorGPA = Math.floor(gpa);
-        let lowestValGradeRange = weightedGPAScale.find(obj =>  obj.gpa == floorGPA).grade;
+    if (gpa == floorGPA) {
+      if (weighted) {
+        let grade = weightedGPAScale.find(obj =>  obj.gpa == gpa).grade;
 
-        grade = lowestValGradeRange + ((gpa - floorGPA) * 10);
-      } 
-      console.log(`Grade: ${grade}`);
-      return grade;
-    }
-    /*
-    if (!weighted) {
-      let grade = parseInt(unWeightedGPAScale.find(obj => obj.gpa == gpa).grade.substring(0, 2));0
-
-      if (grade === undefined) {
-        let 
+        console.log(`Grade: ${grade}`);
+        return grade;
       }
-      console.log(`Grade: ${grade}`);
+/*
+      if (!weighted) {
+        let grade = parseInt(unWeightedGPAScale.find(obj => obj.gpa == gpa).grade.substring(0, 2));0
+
+        if (grade === undefined) {
+          grade = 0;
+        }
+
+        console.log(`Grade: ${grade}`);
+        return grade;
+      }
+      */
+    } else {
+      if (weighted) {
+        let lowestValGradeRange = weightedGPAScale.find(obj =>  obj.gpa == floorGPA).grade;
+        
+        let grade = lowestValGradeRange + ((gpa - floorGPA) * 10);
+        return grade;
+      }
+      /*
+      if (!weighted) {
+
+      }
+      */
     }
-    */
   }
+
   return 0;
 }
 /*

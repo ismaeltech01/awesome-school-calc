@@ -20,6 +20,10 @@ export function roundToHundredths(num) {
   return Math.round(num * 100) / 100;
 }
 
+export function floorToTenths(num) {
+  return Math.floor(num * 10) / 10;
+}
+
 export function parseStrToNum(...args) {
   return args.map(arg => {
     //if (arg.indexOf('.') !== -1)

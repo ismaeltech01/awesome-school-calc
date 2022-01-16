@@ -14,7 +14,7 @@ export default function Results(props) {
   if (usrSubmit) {
     if (gradeNeededEachClass === 0) {
       return (
-        <p className="results submit-result"><aside className="aside-txt">{asideTxt}</aside><br></br>To get a <strong>{desiredGPA}</strong> GPA, you will need a grade of at least <strong>{gradeNeededEachClass}</strong> in every class.</p>
+        <p className="results submit-result"><em className="aside-txt">{asideTxt}</em><br></br>To get a <strong>{desiredGPA}</strong> GPA, you will need a grade of at least <strong>{gradeNeededEachClass}</strong> in every class.</p>
       );
     } else if (gradeNeededEachClass <= 100) {
       return (
