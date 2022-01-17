@@ -52,7 +52,6 @@ export default function GPAWeightedCalc() {
 
   return (
     <div className="calculator-body">
-      <p className="under-dev-notice">Feature under development, don't trust the functionality of this calc.</p>
       <form onSubmit={handleSubmit}>
         <ul>
           <li>

@@ -52,7 +52,7 @@ export default function GPAWeightedCalc() {
 
   return (
     <div className="calculator-body">
-      <p className="under-dev-notice">Feature under development, don't trust the functionality of this calc.</p>
+      <p className="under-dev-notice">Feature under development, don't trust the functionality of this calc. <em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
       <form onSubmit={handleSubmit}>
         <ul>
           <li>
