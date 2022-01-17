@@ -1,5 +1,6 @@
-import { roundToHundredths, floorToTenths, parseStrToNum } from "../functions";
+import { roundToHundredths, parseStrToNum } from "../functions";
 
+//for reference
 const weightedGPAScale = [
   {grade: 100, gpa: 5.0},
   {grade: 99, gpa: 4.9},
@@ -78,77 +79,38 @@ export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nex
   let avgGrade = convertGPAToGrade(curGPA, weighted, 'avg');
   console.log(`Avg grade: ${avgGrade}`);
 
+  if (desAvgGrade === -1 || avgGrade === -1)
+    return -1;
+
   let gradesNeeded = ((desAvgGrade * totalNumClasses) - (classesTaken * avgGrade)) / nextSemClasses;
 
-  return gradesNeeded;
+  return roundToHundredths(gradesNeeded);
 }
 
-function convertGPAToGrade(gpa, weighted, desOrAvgGPA) {
+function convertGPAToGrade(gpa, weighted) {
   let returnVal;
   gpa = roundToHundredths(gpa); //in case the gpa given is not rounded to hundredths
-  let floorGPA = floorToTenths(gpa);
-  console.log(`Rounded GPA: ${gpa}`);
-  console.log(`Floor GPA: ${floorGPA}`);
+  let lowestScaleGPA;
+  let difference;
+  let pntsFrom70;
   
-  if (gpa >= 2.0) {
+  if (gpa >= 2.0 && weighted) {
+    lowestScaleGPA = 2.0;
+    difference = gpa - lowestScaleGPA;
+    pntsFrom70 = difference * (30 / 3);
+    
+    returnVal = pntsFrom70 + 70;
+  } else if (gpa >= 2.2 && !weighted) {
+    lowestScaleGPA = 2.2;
+    difference = gpa - lowestScaleGPA;
+    pntsFrom70 = difference * (30 / 1.8);
+    
+    returnVal = pntsFrom70 + 70;
 
-    if (gpa == floorGPA) {
-
-      if (weighted) {
-        returnVal = weightedGPAScale.find(obj =>  obj.gpa == gpa).grade;
-
-      }
-
-      if (!weighted) {
-        if (desOrAvgGPA == 'des') {
-          returnVal = parseFloat(unWeightedGPAScale.find(obj => obj.gpa == gpa).grade.substring(0, 4));
-        } 
-
-        if (desOrAvgGPA == 'avg') {
-          let gradeObj = unWeightedGPAScale.find(obj => obj.gpa == gpa);
-          let strLength = gradeObj.grade.length;
-          let grade1 = parseFloat(gradeObj.grade.substring(0, 4));
-          let grade2 = parseFloat(gradeObj.grade.substring(strLength - 4, strLength));
-
-          if (grade1 == grade2) {
-            returnVal = grade1;
-          } else {
-            returnVal = (grade1 + grade2) / 2;
-          }
-        }
-
-      }
-      
-    } else {
-
-      if (weighted) {
-        let lowestValGradeRange = weightedGPAScale.find(obj =>  obj.gpa == floorGPA).grade;
-        
-        returnVal = lowestValGradeRange + ((gpa - floorGPA) * 10);
-      }
-      
-      if (!weighted) {
-
-      }
-
-    }
-  } else { 
-   returnVal = 0;
+  } else {
+    returnVal = -1;
   }
 
   console.log(`Grade: ${returnVal}`);
   return returnVal;
 }
-/*
-function convertGradeToGPA(grade, weighted) {
-  if (gpa > 2.0) {
-    if (weighted) {
-      return weightedGPAScale.find(obj => obj.grade.substring).gpa;
-    } 
-    if (!weighted) {
-      return unWeightedGPAScale.find(obj => obj.grade == grade).gpa;
-    }
-  }
-  return 0;
-}
-*/
