@@ -52,7 +52,7 @@ export default function GPAWeightedCalc() {
 
   return (
     <div className="calculator-body">
-      <p className="under-dev-notice">Feature under development, don't trust the functionality of this calc. <em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
+      <p className="under-dev-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
       <form onSubmit={handleSubmit}>
         <ul>
           <li>
@@ -86,7 +86,7 @@ export default function GPAWeightedCalc() {
         </ul>
         <button type="submit" id="submit-button">Submit</button>
       </form>
-      <Results desiredGPA={desiredGPA} gradeNeededEachClass={gradeNeededEachClass} usrSubmit={usrSubmit}/>
+      <Results desiredGPA={desiredGPA} gradeNeededEachClass={gradeNeededEachClass} usrSubmit={usrSubmit} weighted={false}/>
     </div>
   );
 }

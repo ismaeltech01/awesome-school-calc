@@ -85,7 +85,7 @@ export default function GPAWeightedCalc() {
         </ul>
         <button type="submit" id="submit-button">Submit</button>
       </form>
-      <Results desiredGPA={desiredGPA} gradeNeededEachClass={gradeNeededEachClass} usrSubmit={usrSubmit}/>
+      <Results desiredGPA={desiredGPA} gradeNeededEachClass={gradeNeededEachClass} usrSubmit={usrSubmit} weighted={true}/>
     </div>
   );
 }
