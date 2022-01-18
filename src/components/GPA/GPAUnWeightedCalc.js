@@ -7,6 +7,7 @@ export default class GPAWeightedCalc extends React.Component {
     super(props);
     this.state = {currentGPA: '', classesTaken: '', desiredGPA: '', nextSemClasses: '', usrSubmit: false, gradeNeededEachClass: ''};
   }
+  
   componentDidMount() {
     window.addEventListener('beforeunload', this.beforeunload.bind(this));
   }
@@ -36,7 +37,7 @@ export default class GPAWeightedCalc extends React.Component {
 
   handleChange = (e) => {
     let value = e.target.value;
-    let id = e.target.id
+    let id = e.target.id;
 
     if (this.state.usrSubmit)
       this.setState({usrSubmit: false});
@@ -72,7 +73,7 @@ export default class GPAWeightedCalc extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     
-    this.setState({gradesNeededEachClass: gradesNeeded(false, this.state.currentGPA, this.state.classesTaken, this.state.desiredGPA, this.state.nextSemClasses)});
+    this.setState({gradeNeededEachClass: gradesNeeded(false, this.state.currentGPA, this.state.classesTaken, this.state.desiredGPA, this.state.nextSemClasses)});
     this.setState({usrSubmit: true});
   }
 
