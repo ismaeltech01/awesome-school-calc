@@ -59,16 +59,13 @@ const unWeightedGPAScale = [
   {grade: '0', gpa: 2.0}
 ];
 
-export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nextSemClasses) {
+export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nextSemClasses, gpaScale = {}) {
   [curGPA, classesTaken, desGPA, nextSemClasses] = parseStrToNum(curGPA, classesTaken, desGPA, nextSemClasses);
 
   console.log(`Classes Taken: ${classesTaken}, Next Sem classes: ${nextSemClasses}`);
 
   console.log(`Desired GPA: ${desGPA}`);
   console.log(`Current GPA: ${curGPA}`);
-
-  let maxGPA = weighted ? 5 : 4;
-  let gpaScale = weighted ? weightedGPAScale : unWeightedGPAScale;
   
   let totalNumClasses = classesTaken + nextSemClasses;
   console.log(`Total Num Classes: ${totalNumClasses}`);

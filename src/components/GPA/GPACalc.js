@@ -9,18 +9,6 @@ export default function GPACalc() {
     - Custom: Uses your custom settings that you can set to calculate GPA. Customizable settings include: `;
     if (e.target.id === 'help-button')
       alert(alertTxt);
-    
-    /*
-    if (e.target.id === "gpa-default-button") {
-      e.preventDefault();
-      setGpaCalcType('default');
-    }
-    
-    if (e.target.id === "gpa-custom-button") {
-      e.preventDefault();
-      setGpaCalcType('custom');
-    }
-    */
   }
 
   return (
