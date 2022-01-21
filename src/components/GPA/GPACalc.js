@@ -8,7 +8,7 @@ export default function GPACalc() {
     - Default: Uses the default settings to calculate GPA. The default settings are:\n GPA Scale: 4.0\n\t4.0 == 100 3.0 == 90, 2.0 == 80, 1.0 == 70, < 1.0 == 0\n\n 
     - Custom: Uses your custom settings that you can set to calculate GPA. Customizable settings include: `;
     if (e.target.id === 'help-button')
-      alert(alertTxt);
+      alert('Help currently unavailable.');
   }
 
   return (

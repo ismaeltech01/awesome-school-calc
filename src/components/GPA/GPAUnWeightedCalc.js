@@ -80,7 +80,7 @@ export default class GPAWeightedCalc extends React.Component {
   render() {
     return (
       <div className="calculator-body">
-        <p className="under-dev-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
+        <p className="warning-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <ul>
             <li>
