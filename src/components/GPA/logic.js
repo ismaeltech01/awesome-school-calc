@@ -61,6 +61,12 @@ const unWeightedGPAScale = [
 
 export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nextSemClasses, gpaScale = {}) {
   [curGPA, classesTaken, desGPA, nextSemClasses] = parseStrToNum(curGPA, classesTaken, desGPA, nextSemClasses);
+  
+  let scale;
+  if (typeof weighted == 'boolean')
+    scale = weighted ? 'weighted' : 'un-weighted' ;
+  else 
+    scale = gpaScale;
 
   console.log(`Classes Taken: ${classesTaken}, Next Sem classes: ${nextSemClasses}`);
 
@@ -70,10 +76,10 @@ export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nex
   let totalNumClasses = classesTaken + nextSemClasses;
   console.log(`Total Num Classes: ${totalNumClasses}`);
 
-  let desAvgGrade = convertGPAToGrade(desGPA, weighted, 'des');
+  let desAvgGrade = convertGPAToGrade(desGPA, scale);
   console.log(`Des Avg grade: ${desAvgGrade}`);
 
-  let avgGrade = convertGPAToGrade(curGPA, weighted, 'avg');
+  let avgGrade = convertGPAToGrade(curGPA, scale);
   console.log(`Avg grade: ${avgGrade}`);
 
   if (desAvgGrade === -1 || avgGrade === -1)
@@ -84,30 +90,58 @@ export default function gradesNeeded(weighted, curGPA, classesTaken, desGPA, nex
   return roundToHundredths(gradesNeeded);
 }
 
-function convertGPAToGrade(gpa, weighted) {
+function convertGPAToGrade(gpa, scale) {
   let returnVal;
   gpa = roundToHundredths(gpa); //in case the gpa given is not rounded to hundredths
   let lowestScaleGPA;
   let difference;
   let pntsFrom70;
-  
-  if (gpa >= 2.0 && weighted) {
+
+  if (gpa >= 2.0 && scale == 'weighted') {
     lowestScaleGPA = 2.0;
     difference = gpa - lowestScaleGPA;
     pntsFrom70 = difference * (30 / 3);
     
     returnVal = pntsFrom70 + 70;
-  } else if (gpa >= 2.2 && !weighted) {
+  } else if (gpa >= 2.2 && scale == 'un-weighted') {
     lowestScaleGPA = 2.2;
     difference = gpa - lowestScaleGPA;
     pntsFrom70 = difference * (30 / 1.8);
     
     returnVal = pntsFrom70 + 70;
 
+  } else if (typeof scale != 'string') {
+    for (let prop in scale)
+      console.log(prop);
+    returnVal = 0;
   } else {
     returnVal = -1;
   }
 
   console.log(`Grade: ${returnVal}`);
   return returnVal;
+}
+
+export function getGPAScale(minGPA, maxGPA, gpaStep) {
+  [minGPA, maxGPA, gpaStep] = parseStrToNum(minGPA, maxGPA, gpaStep);
+  let scale = {};
+
+  // for (let i = minGPA; i <= maxGPA; i = i + gpaStep) {
+  //   scale[i] = '';
+  //   console.log(scale);
+  // };
+  let i = minGPA;
+  let stopLoop = false;
+  while (!stopLoop) {
+    if (i >= maxGPA) {
+      scale[maxGPA] = '';
+      stopLoop = true;
+    } else
+      scale[i] = '';
+    i = i + gpaStep;
+    console.log(scale);
+  }
+
+  console.log(scale);
+  return scale;
 }
