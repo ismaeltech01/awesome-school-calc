@@ -5,7 +5,7 @@ import Results from "./Results";
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {displayGPAScale: false, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: {}};
+    this.state = {conditions: {displayGPAScale: false, usrCreate: false}, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: {}};
   }
 
   componentDidMount() {
@@ -38,35 +38,66 @@ export default class GPACustomCalc extends React.Component {
   handleChange = (e) => {
     let value = e.target.value;
     let id = e.target.id;
+    let name = e.target.name;
+    let conditions = this.state.conditions;
     
-    if (this.state.displayGPAScale)
-      this.setState({displayGPAScale: false});
+    if (conditions.usrCreate)
+      this.setState((prevState) => ({conditions: {...prevState.conditions, usrCreate: false}}));
+    if (conditions.displayGPAScale)
+      this.setState((prevState) => ({conditions: {...prevState.conditions, displayGPAScale: false}}));
     if (id === 'lowest-gpa')
       this.setState({lowestScaleGPA: value});
     if (id === 'highest-gpa')
       this.setState({largestScaleGPA: value});
     if (id === 'gpa-scale-step')
       this.setState({gpaScaleStep: value});
+    
+    console.log(this.state.gpaScale);
+    
+    if (name == 'gpa-scale-input') {
+      let keys = Object.keys(this.state.gpaScale);
+      keys.forEach((key, index) => {
+        if (key == id)
+          this.setState((prevState) => ({
+            gpaScale : {
+              ...prevState.gpaScale,
+              [key]: [value]
+            }
+          }));
+      });
+    }
   }
 
   handleClick = (e) => {
     alert('Help currently unavailable.');
   }
 
-  handleSubmit = (e) => {
+  handleCreateSubmit = (e) => {
     e.preventDefault();
+    let id = e.target.id;
+    console.log(id);
+    
+    this.setState((prevState) => ({conditions: {...prevState.conditions, usrCreate: true}}));
+    console.log('gpa-scale-form');
+  }
+
+  handleNextSubmit = (e) => {
+    e.preventDefault();
+    let id = e.target.id;
+    console.log(id);
 
     this.setState({gpaScale: getGPAScale(this.state.lowestScaleGPA, this.state.largestScaleGPA, this.state.gpaScaleStep)});
-    this.setState({displayGPAScale: true});
+    this.setState((prevState) => ({conditions: {...prevState.conditions, displayGPAScale: true}}));
+    console.log('initial-vals-form');
   }
 
   render() {
     return (
       <>
       <div className="calculator-body">
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleNextSubmit.bind(this)}>
           <ul>
-          <li>
+            <li>
               <div className="label-and-help-container">
                 <label className="txt-field-label" htmlFor="lowest-gpa">Lowest GPA on the scale:</label>
                 <button type="button" id="help-button" name="lowest-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
@@ -88,88 +119,62 @@ export default class GPACustomCalc extends React.Component {
               <input type="number" id="gpa-scale-step" min="0" max="1.0" onChange={this.handleChange.bind(this)} value={this.state.gpaScaleStep} step=".1" required></input>
             </li>
           </ul>
-          <button type="submit" id="next-button">Next</button>
+          <button type="submit" name="next-btn" id="submit-button">Next</button>
         </form>
         </div>
-        <GPAConversionChart displayGPAScale={this.state.displayGPAScale} gpaScale={this.state.gpaScale} lowestScaleGPA={this.state.lowestScaleGPA}
-        largestScaleGPA={this.state.largestScaleGPA} gpaScaleStep={this.state.gpaScaleStep}/>
-      </>
-    );
-  }
-}
-
-
-class GPAConversionChart extends React.Component {
+        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onclick={this.handleClick.bind(this)} onchange={this.handleChange.bind(this)} 
+        gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
+        {this.state.usrCreate && 
+          <CalculatorBody gpaScale={this.state.gpaScale}/>
+        }
+        </>
+        );
+      }
+    }
+    
+class GPAScale extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {usrCreate: false, gpaScale: this.props.gpaScale};
-  } 
-
-  handleChange = (e) => {
-    let id = e.target.id;
-    let value = e.target.value;
-
-    if (this.state.usrCreate)
-      this.setState({usrCreate: false});
-    
-    let keys = Object.keys(this.state.gpaScale);
-    keys.forEach((key, index) => {
-      if (key == id)
-        this.setState((prevState) => ({
-          gpaScale : {
-            ...prevState[key],
-            [key]: [value]
-          }
-        }));
-    });
   }
-
-  handleClick = (e) => {
-    alert('Help currently unavailable.');
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    this.setState({usrCreate: true});
-  }
-
+      
   render() {
-    if (this.props.displayGPAScale) {
+    if (this.props.displayGPAScale)
       return (
-        <>
         <div className="calculator-body">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <ul>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="current-gpa">Complete the following GPA scale to create the calculator:</label>
-                  <button type="button" id="help-button" name="current-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-                </div>
-              </li>
-              {Object.keys(this.state.gpaScale).map((key, index) => {
-                return (
-                  <li>
-                    <div className="label-and-help-container">
-                      <label className="txt-field-label" htmlFor={key}>{key}</label>
-                      <input type="number" id={key} min="0" max="150" onChange={this.handleChange.bind(this)} value={this.state[key]} step="0.01" required></input>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-            <button type="submit" id="create-button">Create Calc</button>
-          </form>
-        </div>
-        <CalculatorBody usrCreate={this.state.usrCreate} gpaScale={this.state.gpaScale}/>
-        </>
+          <form onSubmit={this.props.handleCreateSubmit}>
+              <ul>
+                <li>
+                  <div className="label-and-help-container">
+                    <label className="txt-field-label" htmlFor="current-gpa">Complete the following GPA scale to create the calculator:</label>
+                    <button type="button" id="help-button" name="current-gpa-hp" onClick={this.props.onclick} title="Help">?</button>
+                  </div>
+                </li>
+                {Object.keys(this.props.gpaScale).map((key, index) => {
+                  console.log(key);
+                  return (<ScaleListItem key={key} keyVal={key} onchange={this.props.onchange} value={this.props.gpaScale[key]}/>);
+                })}
+              </ul>
+              <button type="submit" name="create-btn" id="submit-button">Create Calc</button>
+            </form>
+          </div>
       );
-    } else {
-      return (null);
-    }
+    else
+      return(null);
   }
 }
 
+const ScaleListItem = (props) => {
+  const {keyVal, onchange, value} = props;
+
+  return (
+    <li>
+      <div className="label-and-help-container">
+        <label className="txt-field-label" htmlFor={keyVal}>{keyVal}</label>
+        <input type="number" name="gpa-scale-input" id={keyVal} min="0" max="150" onChange={onchange} value={value} step="0.01" required></input>
+      </div>
+    </li>
+  );
+}
 
 class CalculatorBody extends React.Component {
   constructor(props) {
