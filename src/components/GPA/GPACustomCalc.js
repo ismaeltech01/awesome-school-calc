@@ -40,10 +40,12 @@ export default class GPACustomCalc extends React.Component {
     let id = e.target.id;
     let name = e.target.name;
     let conditions = this.state.conditions;
+    let formId = e.target.form.id;
+    console.log('Form ID:' + formId);
     
-    if (conditions.usrCreate)
+    if (conditions.usrCreate && formId === 'gpa-scale-form')
       this.setState((prevState) => ({conditions: {...prevState.conditions, usrCreate: false}}));
-    if (conditions.displayGPAScale)
+    if (conditions.displayGPAScale && formId === 'initial-vals-form')
       this.setState((prevState) => ({conditions: {...prevState.conditions, displayGPAScale: false}}));
     if (id === 'lowest-gpa')
       this.setState({lowestScaleGPA: value});
@@ -95,7 +97,7 @@ export default class GPACustomCalc extends React.Component {
     return (
       <>
       <div className="calculator-body">
-        <form onSubmit={this.handleNextSubmit.bind(this)}>
+        <form id="initial-vals-form" onSubmit={this.handleNextSubmit.bind(this)}>
           <ul>
             <li>
               <div className="label-and-help-container">
@@ -124,10 +126,8 @@ export default class GPACustomCalc extends React.Component {
         </div>
         <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onclick={this.handleClick.bind(this)} onchange={this.handleChange.bind(this)} 
         gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
-        {this.state.usrCreate && 
-          <CalculatorBody gpaScale={this.state.gpaScale}/>
-        }
-        </>
+        <CalculatorBody gpaScale={this.state.gpaScale} usrCreate={this.state.conditions.usrCreate}/>
+      </>
         );
       }
     }
@@ -141,7 +141,7 @@ class GPAScale extends React.Component {
     if (this.props.displayGPAScale)
       return (
         <div className="calculator-body">
-          <form onSubmit={this.props.handleCreateSubmit}>
+          <form id='gpa-scale-form' onSubmit={this.props.handleCreateSubmit}>
               <ul>
                 <li>
                   <div className="label-and-help-container">
@@ -215,7 +215,7 @@ class CalculatorBody extends React.Component {
     if (this.props.usrCreate) {
       return (
         <div className="calculator-body">
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form id='custom-calc-form' onSubmit={this.handleSubmit.bind(this)}>
             <ul>
               <li>
                 <div className="label-and-help-container">
@@ -252,6 +252,7 @@ class CalculatorBody extends React.Component {
         </div>
       );
     } else {
+      console.log('null return calculator body');
       return (null);
     }
   }
