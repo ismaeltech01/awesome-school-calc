@@ -124,24 +124,28 @@ function convertGPAToGrade(gpa, scale) {
 
 export function getGPAScale(minGPA, maxGPA, gpaStep) {
   [minGPA, maxGPA, gpaStep] = parseStrToNum(minGPA, maxGPA, gpaStep);
-  let scale = {};
+  let scale = [];
 
   // for (let i = minGPA; i <= maxGPA; i = i + gpaStep) {
   //   scale[i] = '';
   //   console.log(scale);
   // };
   let i = minGPA;
+  let index = 0;
   let stopLoop = false;
+
   while (!stopLoop) {
     if (i >= maxGPA) {
-      scale[maxGPA] = '';
+      scale.push([maxGPA, '']);
       stopLoop = true;
     } else
-      scale[i] = '';
+      scale.push([i, '']);
+    index++;
     i = i + gpaStep;
     console.log(scale);
   }
 
+  scale.sort((a, b) => b - a);
   console.log(scale);
   return scale;
 }

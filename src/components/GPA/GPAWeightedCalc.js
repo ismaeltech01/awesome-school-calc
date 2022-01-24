@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import CalcForm from "../CalcForm/CalcForm";
 import gradesNeeded from "./logic";
 import Results from "./Results";
 
@@ -78,41 +79,16 @@ export default class GPAWeightedCalc extends React.Component {
   }
 
   render() {
+    let itemData = [
+      ["current-gpa", "Current GPA:", '2', '5', this.state.currentGPA, '.01'], 
+      ["classes-taken", 'Current amount of classes taken so far:', '0', '200', this.state.classesTaken, '1'],
+      ["desired-gpa", 'Desired GPA:', '2', '5', this.state.desiredGPA, '.01'],
+      ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1']
+    ];
+
     return (
       <div className="calculator-body">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <ul>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
-                <button type="button" id="help-button" name="current-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="current-gpa" min="2" max="5.0" onChange={this.handleChange.bind(this)} value={this.state.currentGPA} step="0.01" required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="classes-taken">Current amount of classes taken so far:</label>
-                <button type="button" id="help-button" name="classes-taken-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="classes-taken" min="0" max="200.0" onChange={this.handleChange.bind(this)} value={this.state.classesTaken} step="1.0" required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="desired-gpa">Desired GPA:</label>
-                <button type="button" id="help-button" name="desired-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="desired-gpa" min="2" max="5.0" onChange={this.handleChange.bind(this)} value={this.state.desiredGPA} step="0.01" required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="next-semester-classes">Amount of classes you will take next semester:</label>
-                <button type="button" id="help-button" name="next-semester-classes-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="next-semester-classes" min="0" max="20.0" onChange={this.handleChange.bind(this)} value={this.state.nextSemClasses} step="1.0" required></input>
-            </li>
-          </ul>
-          <button type="submit" id="submit-button">Submit</button>
-        </form>
+        <CalcForm onsubmit={this.handleSubmit.bind(this)} onclick={this.handleClick.bind(this)} onchange={this.handleChange.bind(this)} itemData={itemData} submitText='Submit'/>
         <Results desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={true}/>
       </div>
     );
