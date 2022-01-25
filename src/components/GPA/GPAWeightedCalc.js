@@ -7,6 +7,9 @@ export default class GPAWeightedCalc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {currentGPA: '', classesTaken: '', desiredGPA: '', nextSemClasses: '', usrSubmit: false, gradeNeededEachClass: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -88,7 +91,7 @@ export default class GPAWeightedCalc extends React.Component {
 
     return (
       <div className="calculator-body">
-        <CalcForm onsubmit={this.handleSubmit.bind(this)} onclick={this.handleClick.bind(this)} onchange={this.handleChange.bind(this)} itemData={itemData} submitText='Submit'/>
+        <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
         <Results desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={true}/>
       </div>
     );

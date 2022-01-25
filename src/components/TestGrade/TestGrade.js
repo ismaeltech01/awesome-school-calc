@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import CalcForm from "../CalcForm/CalcForm";
 import Results from "../TestGrade/Results";
 import calculateTestScoreNeeded from "./logic";
 
@@ -6,6 +7,9 @@ export default class TestGrade extends React.Component {
   constructor(props) {
     super(props);
     this.state = {classAvg: '', testWeight: '', desiredClassAvg: '', usrSubmit: false, gradeNeeded: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -68,34 +72,15 @@ export default class TestGrade extends React.Component {
   }
   
   render() {
+    let itemData = [
+      ["current-average", "Current Class Average:", '0', '110', this.state.classAvg, '.01'],
+      ["test-weight", "Overall weight of test on grade:", '0', '100', this.state.testWeight, '.01'],
+      ["desired-average", "Desired class average after test:", '0', '110', this.state.desiredClassAvg, '.01']
+    ];
+
     return (
       <div className="calculator-body">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <ul>
-            <li>
-              <div className="label-and-help-container">
-                <label htmlFor="current-average">Current Class Average:</label> 
-                <button type="button" id="help-button" name="current-average-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="current-average" min="0" max="110" onChange={this.handleChange.bind(this)} value={this.state.classAvg} required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label htmlFor="test-weight">Overall weight of test on grade:</label> 
-                <button type="button" id="help-button" name="test-weight-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="test-weight" min="0" max="100" onChange={this.handleChange.bind(this)} value={this.state.testWeight} required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label htmlFor="desired-average">Desired class average after test:</label> 
-                <button type="button" id="help-button" name="desired-average-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="desired-average" min="0" max="110" onChange={this.handleChange.bind(this)} value={this.state.desiredClassAvg} required></input>
-            </li>
-          </ul>
-          <button type="submit" id="submit-button">Submit</button>
-        </form> 
+        <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
         <Results usrSubmit={this.state.usrSubmit} classAvg={this.state.classAvg} testWeight={this.state.testWeight} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
       </div>
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import CalcForm from "../CalcForm/CalcForm";
 import gradesNeeded, { getGPAScale } from "./logic";
 import Results from "./Results";
 
@@ -6,6 +7,11 @@ export default class GPACustomCalc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {conditions: {displayGPAScale: false, usrCreate: false}, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]]};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleScaleChange = this.handleScaleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleNextSubmit = this.handleNextSubmit.bind(this);
+    this.handleCreateSubmit = this.handleCreateSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +44,6 @@ export default class GPACustomCalc extends React.Component {
   handleChange = (e) => {
     let value = e.target.value;
     let id = e.target.id;
-    let name = e.target.name;
     let conditions = this.state.conditions;
     let formId = e.target.form.id;
     console.log('Form ID:' + formId);
@@ -55,7 +60,6 @@ export default class GPACustomCalc extends React.Component {
       this.setState({gpaScaleStep: value});
     
     console.log(this.state.gpaScale);
-    console.log(e.target.tagName + ' Tag Name');
   }
 
   handleScaleChange = (e) => {
@@ -89,40 +93,18 @@ export default class GPACustomCalc extends React.Component {
   }
 
   render() {
+    let itemData = [
+      ["lowest-gpa", 'Lowest GPA on the scale:', '0', '10', this.state.lowestScaleGPA, '.01'],
+      ["highest-gpa", 'Highest GPA on the scale:', '0', '10', this.state.largestScaleGPA, '.01'],
+      ["gpa-scale-step", 'GPA Scale Step:', '0', '1', this.state.gpaScaleStep, '.1'],
+    ];
     return (
-      <>
       <div className="calculator-body">
-        <form id="initial-vals-form" onSubmit={this.handleNextSubmit.bind(this)}>
-          <ul>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="lowest-gpa">Lowest GPA on the scale:</label>
-                <button type="button" id="help-button" name="lowest-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="lowest-gpa" min="0" max="10.0" onChange={this.handleChange.bind(this)} value={this.state.lowestScaleGPA} step="0.01" required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="highest-gpa">Highest GPA on the scale:</label>
-                <button type="button" id="help-button" name="highest-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="highest-gpa" min="0" max="10.0" onChange={this.handleChange.bind(this)} value={this.state.largestScaleGPA} step="0.01" required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="gpa-scale-step">GPA Scale Step:</label>
-                <button type="button" id="help-button" name="gpa-scale-step-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="gpa-scale-step" min="0" max="1.0" onChange={this.handleChange.bind(this)} value={this.state.gpaScaleStep} step=".1" required></input>
-            </li>
-          </ul>
-          <button type="submit" name="next-btn" id="submit-button">Next</button>
-        </form>
-        </div>
-        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onclick={this.handleClick.bind(this)} onchange={this.handleScaleChange.bind(this)} 
-        gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
+        <CalcForm onsubmit={this.handleNextSubmit} onclick={this.handleClick} itemData={itemData} submitText='Next'/>
+        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onclick={this.handleClick} onchange={this.handleScaleChange} 
+        gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit}/>
         <CalculatorBody gpaScale={this.state.gpaScale} usrCreate={this.state.conditions.usrCreate}/>
-      </>
+      </div>
         );
       }
     }
@@ -171,6 +153,9 @@ class CalculatorBody extends React.Component {
   constructor(props) {
     super(props);
     this.state = {usrSubmit: false, curGPA: '', classesTaken: '', desGPA: '', nextSemClasses: '', gradeNeededEachClass: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -203,42 +188,16 @@ class CalculatorBody extends React.Component {
   }
 
   render() {
+    let itemData = [
+      ["current-gpa", 'Current GPA:', this.props.lowestScaleGPA, this.props.largestScaleGPA, this.state.curGPA, '.01'],
+      ["classes-taken", 'Current amount of classes taken so far:', '0', '200', this.state.classesTaken, '1'],
+      ["desired-gpa", 'Desired GPA:', this.props.lowestScaleGPA, this.props.largestScaleGPA, this.state.desiredGPA, '.1'],
+      ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1'],
+    ];
     if (this.props.usrCreate) {
       return (
         <div className="calculator-body">
-          <form id='custom-calc-form' onSubmit={this.handleSubmit.bind(this)}>
-            <ul>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="current-gpa">Current GPA:</label>
-                  <button type="button" id="help-button" name="current-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-                </div>
-                <input type="number" id="current-gpa" min={this.props.lowestScaleGPA} max={this.props.largestScaleGPA} onChange={this.handleChange.bind(this)} value={this.state.currentGPA} step="0.01" required></input>
-              </li>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="classes-taken">Current amount of classes taken so far:</label>
-                  <button type="button" id="help-button" name="classes-taken-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-                </div>
-                <input type="number" id="classes-taken" min="0" max="200.0" onChange={this.handleChange.bind(this)} value={this.state.classesTaken} step="1.0" required></input>
-              </li>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="desired-gpa">Desired GPA:</label>
-                  <button type="button" id="help-button" name="desired-gpa-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-                </div>
-                <input type="number" id="desired-gpa" min={this.props.lowestScaleGPA} max={this.props.largestScaleGPA} onChange={this.handleChange.bind(this)} value={this.state.desiredGPA} step="0.01" required></input>
-              </li>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="next-semester-classes">Amount of classes you will take next semester:</label>
-                  <button type="button" id="help-button" name="next-semester-classes-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-                </div>
-                <input type="number" id="next-semester-classes" min="0" max="20.0" onChange={this.handleChange.bind(this)} value={this.state.nextSemClasses} step="1.0" required></input>
-              </li>
-            </ul>
-            <button type="submit" id="submit-button">Submit</button>
-          </form>
+          <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
           <Results desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
         </div>
       );

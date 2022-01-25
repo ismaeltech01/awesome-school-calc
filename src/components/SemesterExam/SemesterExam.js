@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Results from "./Results";
 import calculateGradeNeeded from "./logic";
+import CalcForm from "../CalcForm/CalcForm";
 
 export default class SemesterExam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {semesterAvg: '', percentEffect: '', desiredGrade: '', usrSubmit: false, gradeNeeded: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -68,34 +72,14 @@ export default class SemesterExam extends React.Component {
   }
   
   render() {
+    let itemData = [
+      ["semester-average", "Current Semester Average:", '0', '110', this.state.semesterAvg, '.01'],
+      ["percent-effect", "Percentage effect of semester exam on final semester average:", '0', '100', this.state.percentEffect, '.01'],
+      ["desired-average", "Desired Final semester average:", '0', '110', this.state.desiredGrade, '.01']
+    ];
     return (
       <div className="calculator-body">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <ul>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="semester-average">Current Semester Average:</label> 
-                <button type="button" id="help-button" name="semester-average-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="semester-average" min="0" max="110" onChange={this.handleChange.bind(this)} value={this.state.semesterAvg} required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="percent-effect">Percentage effect of semester exam on final semester average:</label> 
-                <button type="button" id="help-button" name="percent-effect-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="percent-effect" min="0" max="100" onChange={this.handleChange.bind(this)} value={this.state.percentEffect} required></input>
-            </li>
-            <li>
-              <div className="label-and-help-container">
-                <label className="txt-field-label" htmlFor="desired-average">Desired Final semester average:</label> 
-                <button type="button" id="help-button" name="desired-average-hp" onClick={this.handleClick.bind(this)} title="Help">?</button>
-              </div>
-              <input type="number" id="desired-average" min="0" max="110" onChange={this.handleChange.bind(this)} value={this.state.desiredGrade} required></input>
-            </li>
-          </ul>
-          <button type="submit" id="submit-button">Submit</button>
-        </form>
+        <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
         <Results usrSubmit={this.state.usrSubmit} semesterAvg={this.state.semesterAvg} percentEffect={this.state.percentEffect} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
       </div>
     );
