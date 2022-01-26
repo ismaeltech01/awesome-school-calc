@@ -2,15 +2,15 @@ import React from "react";
 import FormListItem from "./FormListItem";
 
 const CalcForm = (props) => {
-  const {onsubmit, onclick, onchange, itemData, submitText} = props;
+  const {onsubmit, onchange, itemData, helpData, submitText} = props;
 
   return(
     <form onSubmit={onsubmit}>
       <ul>
         {
-          itemData.map(([name, text, minVal, maxVal, inputVal, stepVal]) => (
-            <FormListItem key={name} itemName={name} text={text} onclick={onclick} onchange={onchange} minVal={minVal}
-            maxVal={maxVal} inputVal={inputVal} stepVal={stepVal}/>
+          itemData.map(([name, text, minVal, maxVal, inputVal, stepVal], index) => (
+            <FormListItem key={name} itemName={name} text={text} onchange={onchange} minVal={minVal}
+            maxVal={maxVal} inputVal={inputVal} stepVal={stepVal} helpMsg={helpData[index]}/>
           ))
         }
       </ul>
