@@ -8,7 +8,6 @@ export default class SemesterExam extends React.Component {
     super(props);
     this.state = {semesterAvg: '', percentEffect: '', desiredGrade: '', usrSubmit: false, gradeNeeded: ''};
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -59,17 +58,6 @@ export default class SemesterExam extends React.Component {
     if (id === "desired-average")
       this.setState({desiredGrade : value});
   }
-
-  handleClick = (e) => {
-    if (e.target.id === 'help-button') {
-      if (e.target.name === "semester-average-hp")
-        alert('Your current semester average before taking into account the semester exam. \n\nExample: Before finals, I have a 75 in Metaphysics.');
-      if (e.target.name === "percent-effect-hp")
-        alert('The effect that the semester exam will have on your final semester grade. \n\nExample: Your class grade at the end of the semester is 85, which will account for 75% of your final semester average. This means that the semester exam will have a 25% effect on your final semester average.');
-      if (e.target.name === "desired-average-hp")
-        alert('The semester average that you desire to achieve after taking into consideration ALL of your grades. (includes the semester exam and your normal semester grade) \n\n Example: I got a 99% in Curry studies and a 90% on the final exam, which means that I received a total grade of 97.2');
-    }
-  }
   
   render() {
     let itemData = [
@@ -77,9 +65,14 @@ export default class SemesterExam extends React.Component {
       ["percent-effect", "Percentage effect of semester exam on final semester average:", '0', '100', this.state.percentEffect, '.01'],
       ["desired-average", "Desired Final semester average:", '0', '110', this.state.desiredGrade, '.01']
     ];
+    let helpData = [
+      'Your current semester average before taking into account the semester exam. \n\nExample: Before finals, I have a 75 in Metaphysics.',
+      'The effect that the semester exam will have on your final semester grade. \n\nExample: Your class grade at the end of the semester is 85, which will account for 75% of your final semester average. This means that the semester exam will have a 25% effect on your final semester average.',
+      'The semester average that you desire to achieve after taking into consideration ALL of your grades. (includes the semester exam and your normal semester grade) \n\n Example: I got a 99% in Curry studies and a 90% on the final exam, which means that I received a total grade of 97.2'
+    ];
     return (
       <div className="calculator-body">
-        <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
+        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
         <Results usrSubmit={this.state.usrSubmit} semesterAvg={this.state.semesterAvg} percentEffect={this.state.percentEffect} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
       </div>
     );

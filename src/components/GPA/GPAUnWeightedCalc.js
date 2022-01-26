@@ -8,7 +8,6 @@ export default class GPAWeightedCalc extends React.Component {
     super(props);
     this.state = {currentGPA: '', classesTaken: '', desiredGPA: '', nextSemClasses: '', usrSubmit: false, gradeNeededEachClass: ''};
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -54,25 +53,6 @@ export default class GPAWeightedCalc extends React.Component {
     if (id === 'next-semester-classes')
       this.setState({nextSemClasses: value});
   }
-  
-  handleClick = (e) => {
-    let name = e.target.name;
-
-    if (e.target.id === 'help-button') {
-      if (name === "current-gpa-hp") {
-        let msg = `Help currently unavailable.`;
-        alert(msg);
-      }
-      if (name === "current-credits-hp") {
-        let msg = `Help currently unavailable.`;
-        alert(msg);
-      }
-      if (name === "desired-gpa-hp") {
-        let msg = `Help currently unavailable.`;
-        alert(msg);
-      }
-    }
-  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -88,10 +68,16 @@ export default class GPAWeightedCalc extends React.Component {
       ["desired-gpa", 'Desired GPA:', '2', '4', this.state.desiredGPA, '.01'],
       ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1']
     ];
+    let helpData = [
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.'
+    ];
     return (
       <div className="calculator-body">
         <p className="warning-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
-        <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
+        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
         <Results desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>
       </div>
     );

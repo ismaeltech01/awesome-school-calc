@@ -1,5 +1,6 @@
 import React from "react";
 import CalcForm from "../CalcForm/CalcForm";
+import HelpButton from "../CalcForm/HelpButton";
 import gradesNeeded, { getGPAScale } from "./logic";
 import Results from "./Results";
 
@@ -9,7 +10,6 @@ export default class GPACustomCalc extends React.Component {
     this.state = {conditions: {displayGPAScale: false, usrCreate: false}, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]]};
     this.handleChange = this.handleChange.bind(this);
     this.handleScaleChange = this.handleScaleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.handleNextSubmit = this.handleNextSubmit.bind(this);
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this);
   }
@@ -69,10 +69,6 @@ export default class GPACustomCalc extends React.Component {
     this.setState({gpaScale : this.state.gpaScale.map((item) => item[0] == id ? [item[0], value] : item)});
   }
 
-  handleClick = (e) => {
-    alert('Help currently unavailable.');
-  }
-
   handleCreateSubmit = (e) => {
     e.preventDefault();
     let id = e.target.id;
@@ -98,10 +94,16 @@ export default class GPACustomCalc extends React.Component {
       ["highest-gpa", 'Highest GPA on the scale:', '0', '10', this.state.largestScaleGPA, '.01'],
       ["gpa-scale-step", 'GPA Scale Step:', '0', '1', this.state.gpaScaleStep, '.1'],
     ];
+    let helpData = [
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.'
+    ];
     return (
       <div className="calculator-body">
-        <CalcForm onsubmit={this.handleNextSubmit} onclick={this.handleClick} itemData={itemData} submitText='Next'/>
-        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onclick={this.handleClick} onchange={this.handleScaleChange} 
+        <CalcForm onsubmit={this.handleNextSubmit} onchange={this.handleScaleChange} itemData={itemData} helpData={helpData} submitText='Next'/>
+        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onchange={this.handleScaleChange} 
         gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit}/>
         <CalculatorBody gpaScale={this.state.gpaScale} usrCreate={this.state.conditions.usrCreate}/>
       </div>
@@ -110,7 +112,9 @@ export default class GPACustomCalc extends React.Component {
     }
     
 const GPAScale = (props) => {
-  const {displayGPAScale, onclick, onchange, gpaScale, handleCreateSubmit} = props;
+  const {displayGPAScale, onchange, gpaScale, handleCreateSubmit} = props;
+
+  let helpMsg = '';
 
   if (displayGPAScale)
     return (
@@ -120,7 +124,7 @@ const GPAScale = (props) => {
               <li>
                 <div className="label-and-help-container">
                   <label className="txt-field-label" htmlFor="current-gpa">Complete the following GPA scale to create the calculator:</label>
-                  <button type="button" id="help-button" name="current-gpa-hp" onClick={onclick} title="Help">?</button>
+                  <HelpButton itemName='current-gpa' msg={helpMsg}/>
                 </div>
               </li>
               {gpaScale.map(([gpa, grade]) => {
@@ -154,7 +158,6 @@ class CalculatorBody extends React.Component {
     super(props);
     this.state = {usrSubmit: false, curGPA: '', classesTaken: '', desGPA: '', nextSemClasses: '', gradeNeededEachClass: ''};
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -174,12 +177,6 @@ class CalculatorBody extends React.Component {
       this.setState({nextSemClasses: value});
   }
 
-  handleClick = (e) => {
-    let name = e.target.name;
-
-    alert('Help currently unavailable.');
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
     
@@ -194,10 +191,16 @@ class CalculatorBody extends React.Component {
       ["desired-gpa", 'Desired GPA:', this.props.lowestScaleGPA, this.props.largestScaleGPA, this.state.desiredGPA, '.1'],
       ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1'],
     ];
+    let helpData = [
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.',
+      'Help currently unavailable.'
+    ];
     if (this.props.usrCreate) {
       return (
         <div className="calculator-body">
-          <CalcForm onsubmit={this.handleSubmit} onclick={this.handleClick} onchange={this.handleChange} itemData={itemData} submitText='Submit'/>
+          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
           <Results desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
         </div>
       );
