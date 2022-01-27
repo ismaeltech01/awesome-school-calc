@@ -102,7 +102,8 @@ export default class GPACustomCalc extends React.Component {
     ];
     return (
       <div className="calculator-body">
-        <CalcForm onsubmit={this.handleNextSubmit} onchange={this.handleScaleChange} itemData={itemData} helpData={helpData} submitText='Next'/>
+        <p className="warning-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></p>
+        <CalcForm onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Next'/>
         <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onchange={this.handleScaleChange} 
         gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit}/>
         <CalculatorBody gpaScale={this.state.gpaScale} usrCreate={this.state.conditions.usrCreate}/>
