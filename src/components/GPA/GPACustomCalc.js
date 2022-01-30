@@ -7,11 +7,12 @@ import Results from "./Results";
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {conditions: {displayGPAScale: false, usrCreate: false}, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]]};
+    this.state = {displayInitialForm: true, displayGPAScale: false, displayCalcBody: false, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]]};
     this.handleChange = this.handleChange.bind(this);
     this.handleScaleChange = this.handleScaleChange.bind(this);
     this.handleNextSubmit = this.handleNextSubmit.bind(this);
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
   }
 
   componentDidMount() {
@@ -44,14 +45,15 @@ export default class GPACustomCalc extends React.Component {
   handleChange = (e) => {
     let value = e.target.value;
     let id = e.target.id;
-    let conditions = this.state.conditions;
     let formId = e.target.form.id;
     console.log('Form ID:' + formId);
     
-    if (conditions.usrCreate && formId === 'gpa-scale-form')
-      this.setState((prevState) => ({conditions: {...prevState.conditions, usrCreate: false}}));
-    if (conditions.displayGPAScale && formId === 'initial-vals-form')
-      this.setState((prevState) => ({conditions: {...prevState.conditions, displayGPAScale: false}}));
+    if (this.state.displayInitialForm && this.state.gpaScale !== [[]])
+      this.setState({gpaScale: [[]]});
+    if (this.state.displayCalcBody && formId === 'gpa-scale-form')
+      this.setState({displayCalcBody: false});
+    if (this.state.displayGPAScale && formId === 'initial-vals-form')
+      this.setState({displayGPAScale: false});
     if (id === 'lowest-gpa')
       this.setState({lowestScaleGPA: value});
     if (id === 'highest-gpa')
@@ -63,29 +65,44 @@ export default class GPACustomCalc extends React.Component {
   }
 
   handleScaleChange = (e) => {
-    let value = e.target.value;
     let id = e.target.id;
+    let value = e.target.value;
 
-    this.setState({gpaScale : this.state.gpaScale.map((item) => item[0] == id ? [item[0], value] : item)});
+    this.setState({gpaScale : this.state.gpaScale.map((item) => {
+      console.log(item);
+      return item[0] == id ? [item[0], value] : item;
+    })});
   }
 
   handleCreateSubmit = (e) => {
     e.preventDefault();
-    let id = e.target.id;
-    console.log(id);
     
-    this.setState((prevState) => ({conditions: {...prevState.conditions, usrCreate: true}}));
+    this.setState({displayGPAScale: false});
+    this.setState({displayCalcBody: true});
     console.log('gpa-scale-form');
   }
 
   handleNextSubmit = (e) => {
     e.preventDefault();
-    let id = e.target.id;
-    console.log(id);
 
     this.setState({gpaScale: getGPAScale(this.state.lowestScaleGPA, this.state.largestScaleGPA, this.state.gpaScaleStep)});
-    this.setState((prevState) => ({conditions: {...prevState.conditions, displayGPAScale: true}}));
+    this.setState({displayInitialForm: false});
+    this.setState({displayGPAScale: true});
     console.log('initial-vals-form');
+  }
+
+  handleBackClick = (e) => {
+    let displayInitialForm = this.state.displayInitialForm;
+    let displayGPAScale = this.state.displayGPAScale;
+    let displayCalcBody = this.state.displayCalcBody;
+
+    if (displayGPAScale) {
+      this.setState({displayInitialForm: true});
+      this.setState({displayGPAScale: false});
+    } else if (displayCalcBody) {
+      this.setState({displayGPAScale: true});
+      this.setState({displayCalcBody: false});
+    }
   }
 
   render() {
@@ -103,21 +120,31 @@ export default class GPACustomCalc extends React.Component {
     return (
       <div className="calculator-body">
         <p className="warning-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></p>
-        <CalcForm onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Next'/>
-        <GPAScale displayGPAScale={this.state.conditions.displayGPAScale} onchange={this.handleScaleChange} 
-        gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit}/>
-        <CalculatorBody gpaScale={this.state.gpaScale} usrCreate={this.state.conditions.usrCreate}/>
+        <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
+        <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
+        <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
       </div>
         );
-      }
     }
+}
+
+const InitialForm = (props) => {
+  const {display, onsubmit, onchange, itemData, helpData, onBackClick} = props;
+
+  if (display)
+    return (
+    <CalcForm onsubmit={onsubmit} onchange={onchange} itemData={itemData} helpData={helpData} submitText='Next'/>
+    );
+  return null; 
+}
+
     
 const GPAScale = (props) => {
-  const {displayGPAScale, onchange, gpaScale, handleCreateSubmit} = props;
+  const {display, onchange, onBackClick, gpaScale, handleCreateSubmit} = props;
 
   let helpMsg = '';
 
-  if (displayGPAScale)
+  if (display)
     return (
       <div className="calculator-body">
         <form id='gpa-scale-form' onSubmit={handleCreateSubmit}>
@@ -133,6 +160,7 @@ const GPAScale = (props) => {
                 return (<ScaleListItem key={gpa} gpa={gpa} onchange={onchange} value={grade}/>);
               })}
             </ul>
+            <button type="button" id="back-btn" onClick={onBackClick}>Back</button>
             <button type="submit" name="create-btn" id="submit-button">Create Calc</button>
           </form>
         </div>
@@ -198,10 +226,11 @@ class CalculatorBody extends React.Component {
       'Help currently unavailable.',
       'Help currently unavailable.'
     ];
-    if (this.props.usrCreate) {
+    if (this.props.display) {
       return (
         <div className="calculator-body">
-          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
+          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
+          extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
           <Results desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
         </div>
       );
