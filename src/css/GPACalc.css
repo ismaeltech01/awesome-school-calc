@@ -42,6 +42,11 @@
   background-color: var(--quaternary-col);
 }
 
+.scale-li-lbl {
+  padding: 1em;
+  font-weight: 500;
+}
+
 #back-btn {
   background-color: var(--primary-col);
   color: var(--secondary-col);

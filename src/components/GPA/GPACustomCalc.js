@@ -175,7 +175,7 @@ const ScaleListItem = (props) => {
   return (
     <li>
       <div className="label-and-help-container">
-        <label className="txt-field-label" htmlFor={gpa}>{gpa}</label>
+        <label className="scale-li-lbl" htmlFor={gpa}>{gpa}</label>
         <input type="number" name="gpa-scale-input" id={gpa} min="0" max="150" onChange={onchange} value={value} step="0.01" required></input>
       </div>
     </li>
