@@ -1,4 +1,4 @@
-import { roundToHundredths, parseStrToNum } from "../functions";
+import { roundToHundredths, parseStrToNum, roundToTenths } from "../functions";
 
 const weightedGPAScale = [
   ['5.0', '100'],
@@ -163,7 +163,7 @@ export function getGPAScale(minGPA, maxGPA, gpaStep) {
     } else
       scale.push([i, '']);
     index++;
-    i = i + gpaStep;
+    i = roundToTenths(i + gpaStep);
     console.log(scale);
   }
 
