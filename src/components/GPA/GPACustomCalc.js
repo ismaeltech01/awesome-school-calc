@@ -7,7 +7,7 @@ import Results from "./Results";
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {displayInitialForm: true, displayGPAScale: false, displayCalcBody: false, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]]};
+    this.state = {displayInitialForm: true, displayGPAScale: false, displayCalcBody: false, largestScaleGPA: '', lowestScaleGPA: '', gpaScaleStep: '', gpaScale: [[]], emptyGPAScale: true};
     this.handleChange = this.handleChange.bind(this);
     this.handleScaleChange = this.handleScaleChange.bind(this);
     this.handleNextSubmit = this.handleNextSubmit.bind(this);
@@ -48,8 +48,8 @@ export default class GPACustomCalc extends React.Component {
     let formId = e.target.form.id;
     console.log('Form ID:' + formId);
     
-    if (this.state.displayInitialForm && this.state.gpaScale !== [[]])
-      this.setState({gpaScale: [[]]});
+    if (this.state.displayInitialForm && !this.state.emptyGPAScale)
+      this.setState({gpaScale: [[]], emptyGPAScale: true});
     if (this.state.displayCalcBody && formId === 'gpa-scale-form')
       this.setState({displayCalcBody: false});
     if (this.state.displayGPAScale && formId === 'initial-vals-form')
@@ -85,7 +85,8 @@ export default class GPACustomCalc extends React.Component {
   handleNextSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({gpaScale: getGPAScale(this.state.lowestScaleGPA, this.state.largestScaleGPA, this.state.gpaScaleStep)});
+    if (this.state.emptyGPAScale)
+      this.setState({gpaScale: getGPAScale(this.state.lowestScaleGPA, this.state.largestScaleGPA, this.state.gpaScaleStep), emptyGPAScale: false});
     this.setState({displayInitialForm: false});
     this.setState({displayGPAScale: true});
     console.log('initial-vals-form');
@@ -124,7 +125,7 @@ export default class GPACustomCalc extends React.Component {
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
       </div>
-        );
+      );
     }
 }
 
