@@ -9,4 +9,3 @@ import './InitialQuestion.scss';
 import './GPACalc.scss';
 import './SemesterExam.scss';
 import './TestGrade.scss';
-import './underDevNotice.scss';
