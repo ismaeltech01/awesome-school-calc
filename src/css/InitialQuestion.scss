@@ -1,11 +1,15 @@
 @import 'variables.scss';
 
-.initial-question-body {
+.init-q-body {
   background-color: $tertiary-col;
   padding: 3em 3em;
 }
 
-.initial-question-heading {
+.init-q-els {
+  animation: appear .5s ease-out 0s forwards;
+}
+
+.init-q-head {
   color: $primary-col;
   padding: 2em;
 }

@@ -74,11 +74,13 @@ export default class GPAWeightedCalc extends React.Component {
       'Help currently unavailable.'
     ];
     return (
-      <div className="calculator-body">
-        <CalcHeader navTo='/gpa' txt='Un-Weighted GPA'/>
-        <h3 className="calc-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></h3>
-        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-        <GPAResults desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>
+      <div className="calc-body">
+        <div className="calc-els">
+          <CalcHeader navTo='/gpa' txt='Un-Weighted GPA'/>
+          <h3 className="calc-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></h3>
+          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
+          <GPAResults desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>
+        </div>
       </div>
     );
   }

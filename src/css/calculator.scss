@@ -1,7 +1,14 @@
 @import 'variables.scss';
+@import 'animations.scss';
 
-.calculator-body {
+.calc-body {
   background-color: $tertiary-col;
+}
+
+.calc-els {
+  opacity: 0;
+  background: none;
+  animation: slide 1s ease-out 0s forwards;
 }
 
 form ul li {

@@ -117,12 +117,14 @@ export default class GPACustomCalc extends React.Component {
       'Help currently unavailable.'
     ];
     return (
-      <div className="calculator-body">
+      <div className="calc-body">
+        <div className="calc-els">
         <CalcHeader navTo='/gpa' txt='Custom GPA'/>
         <h3 className="calc-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></h3>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
+        </div>
       </div>
       );
     }
@@ -147,7 +149,8 @@ const GPAScale = (props) => {
   if (display)
     return (
       <div className="calculator-body">
-        <form id='gpa-scale-form' onSubmit={handleCreateSubmit}>
+        <div className="calc-els">
+          <form id='gpa-scale-form' onSubmit={handleCreateSubmit}>
             <ul>
               <li>
                 <div className="label-and-help-container">
@@ -164,6 +167,7 @@ const GPAScale = (props) => {
             <button type="submit" name="create-btn" id="submit-button">Create Calc</button>
           </form>
         </div>
+      </div>
     );
   else
     return(null);
@@ -228,10 +232,12 @@ class CalculatorBody extends React.Component {
     ];
     if (this.props.display) {
       return (
-        <div className="calculator-body">
-          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
-          extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
-          <GPAResults desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
+        <div className="calc-body">
+          <div className="calc-els">
+            <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
+            extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
+            <GPAResults desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
+          </div>
         </div>
       );
     } else {

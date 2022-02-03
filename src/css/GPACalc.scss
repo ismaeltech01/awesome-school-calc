@@ -1,8 +1,13 @@
+@use 'InitialQuestion.scss';
 @import 'variables.scss';
 
 .calc-notice {
   padding: 2.2em;
   font-size: 1em;
+}
+
+#gpa-head {
+  @extend .init-q-els;
 }
 
 .gpa-calc-types-container {

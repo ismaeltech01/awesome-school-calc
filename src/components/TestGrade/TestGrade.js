@@ -70,10 +70,12 @@ export default class TestGrade extends React.Component {
       'The class average that you would like to have after the score of the test is accounted for. \n\nExample: I wish I am still passing my Biology class after the test.',
     ];
     return (
-      <div className="calculator-body">
-        <CalcHeader navTo='/' txt='Test Grade'/>
-        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-        <TestResults usrSubmit={this.state.usrSubmit} classAvg={this.state.classAvg} testWeight={this.state.testWeight} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
+      <div className="calc-body">
+        <div className="calc-els">
+          <CalcHeader navTo='/' txt='Test Grade'/>
+          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
+          <TestResults usrSubmit={this.state.usrSubmit} classAvg={this.state.classAvg} testWeight={this.state.testWeight} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
+        </div>
       </div>
     );
   }
