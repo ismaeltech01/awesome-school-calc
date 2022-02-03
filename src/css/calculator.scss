@@ -1,5 +1,7 @@
+@import 'variables.scss';
+
 .calculator-body {
-  background-color: var(--tertiary-col);
+  background-color: $tertiary-col;
 }
 
 form ul li {
@@ -19,9 +21,9 @@ button {
 }
 
 #help-button {
-  background-color: var(--primary-col);
-  color: var(--secondary-col);
-  box-shadow: .1em .1em .2em var(--shadow-col);
+  background-color: $primary-col;
+  color: $secondary-col;
+  box-shadow: .1em .1em .2em $shadow-col;
   border: none;
   border-radius: 1em;
   cursor: help;
@@ -30,13 +32,13 @@ button {
 }
 
 #submit-button {
-  background-color: var(--primary-col);
-  color: var(--secondary-col);
+  background-color: $primary-col;
+  color: $secondary-col;
   font-weight: 600;
   padding: 1em;
   border-radius: 1em;
   margin: 1em;
-  box-shadow: .1em .1em .3em var(--shadow-col);
+  box-shadow: .1em .1em .3em $shadow-col;
   border: none;
 }
 
@@ -50,13 +52,13 @@ button {
 }
 
 .submit-result {
-  background-color: var(--quaternary-col);
-  color: var(--secondary-col);
+  background-color: $quaternary-col;
+  color: $secondary-col;
 }
 
 .no-submit-result {
-  background-color: var(--shadow-col);
-  color: var(--secondary-col);
+  background-color: $shadow-col;
+  color: $secondary-col;
 }
 
 .results strong {

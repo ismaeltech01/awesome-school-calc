@@ -1,21 +1,10 @@
 @charset "UTF-8";
+@import 'variables.scss';
+
 /* Contains global styling applicable to all components */
 
-:root {
-  --primary-col: rgb(10, 120, 350);
-  --secondary-col: rgb(300, 300, 300);
-  --tertiary-col: rgb(230, 230, 230);
-  --quaternary-col: rgb(0, 0, 128);
-  --calc-txt-col: rgb(10, 10, 10);
-  --link-col: rgb(100, 100, 100);
-  --link-visited-col: rgb(192, 192, 192);
-  --link-hover-col: rgb(150, 150, 150);
-  --link-active-col: rgb(70, 70, 100);
-  --shadow-col: rgb(50, 50, 50);
-}
-
 body {
-  background-color: var(--primary-col);
+  background-color: $tertiary-col;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -40,17 +29,17 @@ a {
 }
 
 a:link {
-  color: var(--link-col);
+  color: $link-col;
 }
 
 a:visited {
-  color: var(--link-visited-col);
+  color: $link-visited-col;
 }
 
 a:hover {
-  color: var(--link-hover-col);
+  color: $link-hover-col;
 }
 
 a:active {
-  color: var(--link-active-col);
+  color: $link-active-col;
 }

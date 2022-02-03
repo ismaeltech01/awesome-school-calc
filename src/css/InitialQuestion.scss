@@ -1,9 +1,11 @@
+@import 'variables.scss';
+
 .initial-question-body {
-  background-color: var(--tertiary-col);
+  background-color: $tertiary-col;
 }
 
 .initial-question-heading {
-  color: var(--primary-col);
+  color: $primary-col;
   padding: 1em;
 }
 
@@ -15,31 +17,31 @@
 }
 
 #calc-option {
-  color: var(--secondary-col);
+  color: $secondary-col;
   padding: 1em;
   margin: 0em 1em;
-  background-color: var(--primary-col);
+  background-color: $primary-col;
   border-radius: 1.5em;
   font-weight: 500;
-  box-shadow: .1em .1em .3em var(--shadow-col);
+  box-shadow: .1em .1em .3em $shadow-col;
 }
 
 #calc-option a:link {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
 }
 
 #calc-option a:visited {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
 }
 
 #calc-option:hover {
-  background-color: linear-gradient(300, --primary-col, --tertiary-col);
+  background-color: linear-gradient(300, $primary-col, $tertiary-col);
 }
 
 #calc-option a:active {
-  background-color: var(--quaternary-col);
+  background-color: $quaternary-col;
 }
 
 #calc-option.active {
-  background-color: var(--quaternary-col);
+  background-color: $quaternary-col;
 }

@@ -1,13 +1,15 @@
+@import 'variables.scss';
+
 header {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
   padding: 1.5em;
 }
 
 .header-txt {
-  color: var(--secondary-col);
+  color: $secondary-col;
 }
 
 .header-sup-txt {
-  color: var(--tertiary-col);
+  color: $tertiary-col;
   font-size: .7em;
 }

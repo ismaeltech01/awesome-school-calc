@@ -1,22 +1,24 @@
+@import 'variables.scss';
+
 footer {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
   padding: 3em;
 }
 
 .author-txt {
   font-size: 1.2em;
-  color: var(--secondary-col);
+  color: $secondary-col;
   margin: .5em 1em;
 }
 
 .license-txt {
   font-size: .9em;
-  color: var(--secondary-col);
+  color: $secondary-col;
   margin: .5em 1em;
 }
 
 .notice-txt {
-  color: var(--secondary-col);
+  color: $secondary-col;
   margin: 2em 1em .2em;
 }
 
@@ -25,17 +27,17 @@ footer a {
 }
 
 footer a:link {
-  color: var(--link-col);
+  color: $link-col;
 }
 
 footer a:visited {
-  color: var(--link-visited-col);
+  color: $link-visited-col;
 }
 
 footer a:hover {
-  color: var(--link-hover-col);
+  color: $link-hover-col;
 }
 
 footer a:active {
-  color: var(--link-active-col);
+  color: $link-active-col;
 }

@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .gpa-calc-types-container {
   padding: .5em 1em 2em;
   display: flex;
@@ -6,38 +8,38 @@
 }
 
 #gpa-calc-option {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
   padding: 1em;
 }
 
 #gpa-calc-option {
-  color: var(--secondary-col);
+  color: $secondary-col;
   padding: 1em;
   margin: 0em 1em;
-  background-color: var(--primary-col);
+  background-color: $primary-col;
   border-radius: 1.5em;
   font-weight: 500;
-  box-shadow: .1em .1em .3em var(--shadow-col);
+  box-shadow: .1em .1em .3em $shadow-col;
 }
 
 #gpa-calc-option a:link {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
 }
 
 #gpa-calc-option a:visited {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
 }
 
 #gpa-calc-option:hover {
-  background-color: var(--primary-col);
+  background-color: $primary-col;
 }
 
 #gpa-calc-option a:active {
-  background-color: var(--quaternary-col);
+  background-color: $quaternary-col;
 }
 
 #gpa-calc-option.active {
-  background-color: var(--quaternary-col);
+  background-color: $quaternary-col;
 }
 
 .scale-li-lbl {
@@ -46,13 +48,13 @@
 }
 
 #back-btn {
-  background-color: var(--primary-col);
-  color: var(--secondary-col);
+  background-color: $primary-col;
+  color: $secondary-col;
   font-weight: 600;
   padding: 1em;
   border-radius: 1em;
   margin: 1em;
-  box-shadow: .1em .1em .3em var(--shadow-col);
+  box-shadow: .1em .1em .3em $shadow-col;
   border: none;
 }
 
