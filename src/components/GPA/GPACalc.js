@@ -11,7 +11,6 @@ export default function GPACalc() {
   return (
     <div className="calculator-body">
       <CalcHeader navTo='/' txt='GPA Calc'/>
-      <h3 className="recommended-gpa-calc-notice"> Note: For more accurate results, use the <strong>Custom</strong> calculator.</h3>
       <div className="label-and-help-container">
         <label className="txt-field-label" htmlFor="gpa-calc-type">Select GPA calculator type:</label>
         <HelpButton itemName='gpa-calc' msg={helpMsg}/>

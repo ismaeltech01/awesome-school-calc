@@ -2,11 +2,12 @@
 
 .initial-question-body {
   background-color: $tertiary-col;
+  padding: 3em 3em;
 }
 
 .initial-question-heading {
   color: $primary-col;
-  padding: 1em;
+  padding: 2em;
 }
 
 #calc-types-container {
@@ -18,7 +19,7 @@
 
 #calc-option {
   color: $secondary-col;
-  padding: 1em;
+  padding: 1.5em;
   margin: 0em 1em;
   background-color: $primary-col;
   border-radius: 1.5em;

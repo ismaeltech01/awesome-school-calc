@@ -119,7 +119,7 @@ export default class GPACustomCalc extends React.Component {
     return (
       <div className="calculator-body">
         <CalcHeader navTo='/gpa' txt='Custom GPA'/>
-        <p className="warning-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></p>
+        <h3 className="calc-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></h3>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
