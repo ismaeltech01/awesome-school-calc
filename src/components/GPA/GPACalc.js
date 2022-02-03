@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import HelpButton from "../CalcForm/HelpButton";
-import CalcHeader from "../CalcForm/CalcHeader";
+import { HelpButton, CalcHeader } from "..";
 
 export default function GPACalc() {
   let helpMsg = `Help currently unavailable.`;

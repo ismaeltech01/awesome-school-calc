@@ -1,9 +1,6 @@
 import React from "react";
-import CalcForm from "../CalcForm/CalcForm";
-import CalcHeader from "../CalcForm/CalcHeader";
-import HelpButton from "../CalcForm/HelpButton";
+import { HelpButton, CalcHeader, CalcForm, GPAResults } from "..";
 import gradesNeeded, { getGPAScale } from "./logic";
-import Results from "./Results";
 
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
@@ -234,7 +231,7 @@ class CalculatorBody extends React.Component {
         <div className="calculator-body">
           <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
           extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
-          <Results desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
+          <GPAResults desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
         </div>
       );
     } else {

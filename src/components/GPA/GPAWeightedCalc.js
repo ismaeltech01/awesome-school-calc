@@ -1,8 +1,6 @@
 import React from "react";
-import CalcForm from "../CalcForm/CalcForm";
-import CalcHeader from "../CalcForm/CalcHeader";
 import gradesNeeded from "./logic";
-import Results from "./Results";
+import { CalcForm, CalcHeader, GPAResults} from "..";
 
 export default class GPAWeightedCalc extends React.Component {
   constructor(props) {
@@ -79,7 +77,7 @@ export default class GPAWeightedCalc extends React.Component {
       <div className="calculator-body">
         <CalcHeader navTo='/gpa' txt='Weighted GPA'/>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-        <Results desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={true}/>
+        <GPAResults desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={true}/>
       </div>
     );
   }

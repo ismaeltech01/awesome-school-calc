@@ -1,9 +1,6 @@
 import React, {useState} from "react";
-import CalcForm from "../CalcForm/CalcForm";
-import Results from "../TestGrade/Results";
 import calculateTestScoreNeeded from "./logic";
-import { NavLink } from "react-router-dom";
-import CalcHeader from "../CalcForm/CalcHeader";
+import { CalcForm, CalcHeader, TestResults} from "..";
 
 export default class TestGrade extends React.Component {
   constructor(props) {
@@ -76,7 +73,7 @@ export default class TestGrade extends React.Component {
       <div className="calculator-body">
         <CalcHeader navTo='/' txt='Test Grade'/>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-        <Results usrSubmit={this.state.usrSubmit} classAvg={this.state.classAvg} testWeight={this.state.testWeight} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
+        <TestResults usrSubmit={this.state.usrSubmit} classAvg={this.state.classAvg} testWeight={this.state.testWeight} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
       </div>
     );
   }
