@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Results from "./Results";
 import calculateGradeNeeded from "./logic";
 import CalcForm from "../CalcForm/CalcForm";
+import CalcHeader from "../CalcForm/CalcHeader";
 
 export default class SemesterExam extends React.Component {
   constructor(props) {
@@ -72,6 +73,7 @@ export default class SemesterExam extends React.Component {
     ];
     return (
       <div className="calculator-body">
+        <CalcHeader txt='Semester Exam' navTo='/'/>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
         <Results usrSubmit={this.state.usrSubmit} semesterAvg={this.state.semesterAvg} percentEffect={this.state.percentEffect} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
       </div>

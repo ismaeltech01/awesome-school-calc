@@ -1,5 +1,6 @@
 import React from "react";
 import CalcForm from "../CalcForm/CalcForm";
+import CalcHeader from "../CalcForm/CalcHeader";
 import HelpButton from "../CalcForm/HelpButton";
 import gradesNeeded, { getGPAScale } from "./logic";
 import Results from "./Results";
@@ -120,6 +121,7 @@ export default class GPACustomCalc extends React.Component {
     ];
     return (
       <div className="calculator-body">
+        <CalcHeader navTo='/gpa' txt='Custom GPA'/>
         <p className="warning-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></p>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CalcForm from "../CalcForm/CalcForm";
+import CalcHeader from "../CalcForm/CalcHeader";
 import gradesNeeded from "./logic";
 import Results from "./Results";
 
@@ -76,6 +77,7 @@ export default class GPAWeightedCalc extends React.Component {
     ];
     return (
       <div className="calculator-body">
+        <CalcHeader navTo='/gpa' txt='Un-Weighted GPA'/>
         <p className="warning-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></p>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
         <Results desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>
