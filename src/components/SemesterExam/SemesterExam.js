@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import calculateGradeNeeded from "./logic";
-import { CalcForm, CalcHeader, SemResults} from "..";
+import { Calc, CalcForm, CalcHeader, Results} from "..";
 
 export default class SemesterExam extends React.Component {
   constructor(props) {
@@ -70,13 +70,11 @@ export default class SemesterExam extends React.Component {
       'The semester average that you desire to achieve after taking into consideration ALL of your grades. (includes the semester exam and your normal semester grade) \n\n Example: I got a 99% in Curry studies and a 90% on the final exam, which means that I received a total grade of 97.2'
     ];
     return (
-      <div className="calc-body">
-        <div className="calc-els">
-          <CalcHeader txt='Semester Exam' navTo='/'/>
-          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-          <SemResults usrSubmit={this.state.usrSubmit} semesterAvg={this.state.semesterAvg} percentEffect={this.state.percentEffect} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
-        </div>
-      </div>
+      <Calc>
+        <CalcHeader txt='Semester Exam' navTo='/'/>
+        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
+        <Results usrSubmit={this.state.usrSubmit} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
+      </Calc>
     );
   }
 }

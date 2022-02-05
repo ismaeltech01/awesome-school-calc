@@ -1,8 +1,7 @@
 import React from "react";
 import FormListItem from "./FormListItem";
 
-const CalcForm = (props) => {
-  const {onsubmit, onchange, itemData, helpData, submitText, extraBtn, extraBtnText, onBackClick} = props;
+const CalcForm = ({onsubmit, onchange, itemData, helpData, submitText, extraBtn, extraBtnText, onBackClick} ) => {
 
   if (typeof extraBtn !== 'boolean' || !extraBtn)
     return(

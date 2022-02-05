@@ -10,12 +10,16 @@ export {default as GPAUnWeightedCalc} from "./GPA/GPAUnWeightedCalc";
 export {default as GPACustomCalc} from "./GPA/GPACustomCalc";
 
 //Results
-export {default as GPAResults} from "./GPA/Results";
-export {default as SemResults} from "./SemesterExam/Results";
-export {default as TestResults} from "./TestGrade/Results";
+export {default as GPAResultTxt} from "./GPA/ResultTxt";
+export {default as SemResultTxt} from "./SemesterExam/ResultTxt";
+export {default as TestResultTxt} from "./TestGrade/ResultTxt";
 
 //Basic Components
+export {default as Calc} from "./CalcForm/Calc";
 export {default as CalcForm} from "./CalcForm/CalcForm";
 export {default as CalcHeader} from "./CalcForm/CalcHeader";
 export {default as FormListItem} from "./CalcForm/FormListItem";
 export {default as HelpButton} from "./CalcForm/HelpButton";
+export {default as Container} from "./CalcForm/Container";
+export {default as Results} from "./CalcForm/Results";
+

@@ -1,9 +1,7 @@
 //GPA results
 import React from "react";
 
-export default function Results(props) {
-  const {usrSubmit, desiredGPA, gradeNeededEachClass, weighted} = props;
-
+const ResultTxt = ({usrSubmit, desiredGPA, gradeNeededEachClass, weighted}) => {
   let initialTxt = `Fill out all of the fields above and click the Submit button to get a result.`;
 
   let asideTxt = `How in the world did you get to this result? You must be some super mastermind... 
@@ -39,3 +37,5 @@ export default function Results(props) {
     );
   }
 }
+
+export default ResultTxt;
