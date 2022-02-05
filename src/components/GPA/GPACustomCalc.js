@@ -1,5 +1,6 @@
-import React from "react";
-import { HelpButton, CalcHeader, CalcForm, GPAResults } from "..";
+import React, { useContext } from "react";
+import { HelpButton, CalcHeader, CalcForm, Calc, Container, Results, GPAResultTxt } from "..";
+import { ThemeContext } from "../themeContext";
 import gradesNeeded, { getGPAScale } from "./logic";
 
 export default class GPACustomCalc extends React.Component {
@@ -117,15 +118,13 @@ export default class GPACustomCalc extends React.Component {
       'Help currently unavailable.'
     ];
     return (
-      <div className="calc-body">
-        <div className="calc-els">
+      <Calc>
         <CalcHeader navTo='/gpa' txt='Custom GPA'/>
-        <h3 className="calc-notice"><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></h3>
+        <h3 id="calc-notice" className=""><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></h3>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
-        </div>
-      </div>
+      </Calc>
       );
     }
 }
@@ -141,47 +140,45 @@ const InitialForm = (props) => {
 }
 
     
-const GPAScale = (props) => {
-  const {display, onchange, onBackClick, gpaScale, handleCreateSubmit} = props;
+const GPAScale = ({display, onchange, onBackClick, gpaScale, handleCreateSubmit}) => {
+  const {theme} = useContext(ThemeContext);
 
   let helpMsg = '';
 
   if (display)
     return (
-      <div className="calculator-body">
-        <div className="calc-els">
-          <form id='gpa-scale-form' onSubmit={handleCreateSubmit}>
-            <ul>
-              <li>
-                <div className="label-and-help-container">
-                  <label className="txt-field-label" htmlFor="current-gpa">Complete the following GPA scale to create the calculator:</label>
-                  <HelpButton itemName='current-gpa' msg={helpMsg}/>
-                </div>
-              </li>
-              {gpaScale.map(([gpa, grade]) => {
-                console.log(gpa);
-                return (<ScaleListItem key={gpa} gpa={gpa} onchange={onchange} value={grade}/>);
-              })}
-            </ul>
-            <button type="button" id="back-btn" onClick={onBackClick}>Back</button>
-            <button type="submit" name="create-btn" id="submit-button">Create Calc</button>
-          </form>
-        </div>
-      </div>
+      <Calc>
+        <form id='gpa-scale-form' onSubmit={handleCreateSubmit}>
+          <ul>
+            <li>
+              <Container name="label-and-help">
+                <label id="txt-field-label" className={theme} htmlFor="current-gpa">Complete the following GPA scale to create the calculator:</label>
+                <HelpButton itemName='current-gpa' msg={helpMsg}/>
+              </Container>
+            </li>
+            {gpaScale.map(([gpa, grade]) => {
+              console.log(gpa);
+              return (<ScaleListItem key={gpa} gpa={gpa} onchange={onchange} value={grade}/>);
+            })}
+          </ul>
+          <button type="button" id="back-btn" onClick={onBackClick}>Back</button>
+          <button type="submit" id="submit-button">Create Calc</button>
+        </form>
+      </Calc>
     );
   else
     return(null);
 }
 
-const ScaleListItem = (props) => {
-  const {gpa, onchange, value} = props;
+const ScaleListItem = ({gpa, onchange, value}) => {
+  const {theme} = useContext(ThemeContext);
 
   return (
     <li>
-      <div className="label-and-help-container">
+      <Container name="label-and-help">
         <label className="scale-li-lbl" htmlFor={gpa}>{gpa}</label>
         <input type="number" name="gpa-scale-input" id={gpa} min="0" max="150" onChange={onchange} value={value} step="0.01" required></input>
-      </div>
+      </Container>
     </li>
   );
 }
@@ -232,13 +229,13 @@ class CalculatorBody extends React.Component {
     ];
     if (this.props.display) {
       return (
-        <div className="calc-body">
-          <div className="calc-els">
-            <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
-            extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
-            <GPAResults desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
-          </div>
-        </div>
+        <Calc>
+          <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit' 
+          extraSubmitBtn={true} extraBtn={true} extraBtnText='Back' onBackClick={this.props.onBackClick}/>
+          <Results>
+            <GPAResultTxt desiredGPA={this.state.desGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit}/>
+          </Results>
+        </Calc>
       );
     } else {
       console.log('null return calculator body');
