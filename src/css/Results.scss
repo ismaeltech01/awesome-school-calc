@@ -1,0 +1,24 @@
+@import 'variables.scss';
+@import 'animations.scss';
+@import 'mixins.scss';
+
+#results {
+  font-weight: 500;
+  @include colProp(result-txt, color);
+
+  & > div:first-child {
+    padding: 3em;
+  }
+
+  & #submit {
+    @include colProp(submit-result, background-color);
+  }
+
+  & #no-submit {
+    @include colProp(result, background-color);
+  }
+
+  & strong {
+    font-weight: 800;
+  }
+}
