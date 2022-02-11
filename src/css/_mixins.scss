@@ -1,0 +1,138 @@
+@use 'sass:meta';
+
+@mixin colProp($color, $prop) {
+  $light-col: $primary-col !default;
+  $dark-col: $primary-col-dark !default;
+  @if $color == primary {
+    $light-col: $primary-col;
+    $dark-col: $primary-col-dark;
+  } @else if $color == secondary {
+    $light-col: $secondary-col;
+    $dark-col: $secondary-col-dark;
+  } @else if $color == tertiary {
+    $light-col: $tertiary-col;
+    $dark-col: $tertiary-col-dark;
+  } @else if $color == quaternary {
+    $light-col: $quaternary-col;
+    $dark-col: $quaternary-col-dark;
+  } @else if $color == shadow {
+    $light-col: $shadow-col;
+    $dark-col: $shadow-col-dark;
+  } @else if $color == calc-txt {
+    $light-col: $calc-txt-col;
+    $dark-col: $calc-txt-col-dark;
+  } @else if $color == btn {
+    $light-col: $calc-txt-col;
+    $dark-col: $calc-txt-col-dark;
+  } @else if $color == btn-txt {
+    $light-col: $calc-txt-col;
+    $dark-col: $calc-txt-col-dark;
+  } @else if $color == result {
+    $light-col: $result-col;
+    $dark-col: $result-col-dark;
+  } @else if $color == submit-result {
+    $light-col: $submit-result-col;
+    $dark-col: $submit-result-col-dark;
+  } @else if $color == result-txt {
+    $light-col: $result-txt-col;
+    $dark-col: $result-txt-col-dark;
+  } @else {
+    @error "Unknown $color prop for colProp mixin.";
+  }
+
+  &.light {
+    #{$prop}: $light-col;
+  }
+  
+  &.dark {
+    #{$prop}: $dark-col;
+  }  
+}
+
+@mixin button {
+  font-weight: 600;
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em;
+  border: none;
+
+  &.light {
+    background-color: $btn-col;
+    color: $btn-txt-col;
+    box-shadow: .1em .1em .3em $shadow-col;
+  }
+  
+  &.dark {
+    background-color: $btn-col-dark;
+    color: $btn-txt-col-dark;
+    box-shadow: .1em .1em .3em $shadow-col-dark;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin linkBtn {
+  padding: 1.5em;
+  margin: 0em 1em;
+  border-radius: 1.5em;
+  font-weight: 500;
+  
+  &.light {
+    background-color: $btn-col;
+    color: $btn-txt-col;
+    box-shadow: .1em .1em .3em $shadow-col;
+    
+    & a:link {
+      background-color: $primary-col;
+    }
+    & a:visited {
+      background-color: $primary-col;
+    }
+
+    &:hover {
+      background-color: linear-gradient(300, $primary-col, $tertiary-col);
+    }
+
+    & a:active {
+      background-color: $quaternary-col;
+    }
+  }
+  
+  &.dark {
+    background-color: $btn-col-dark;
+    color: $btn-txt-col-dark;
+    box-shadow: .1em .1em .3em $shadow-col-dark;
+
+    & a:link {
+      background-color: $primary-col-dark;
+    }
+    & a:visited {
+      background-color: $primary-col-dark;
+    }
+
+    &:hover {
+      background-color: linear-gradient(300, $primary-col-dark, $tertiary-col-dark);
+    }
+
+    & a:active {
+      background-color: $quaternary-col-dark;
+    }
+  }
+}
+
+@mixin link {
+  &:link {
+    color: $link-col;
+  }
+  &:visited {
+    color: $link-visited-col;
+  }
+  &:hover {
+    color: $link-hover-col;
+  }
+  &:active {
+    color: $link-active-col;
+  }
+}

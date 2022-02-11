@@ -1,10 +1,41 @@
+//light theme colors
 $primary-col: rgb(10, 120, 350);
 $secondary-col: rgb(300, 300, 300);
 $tertiary-col: rgb(230, 230, 230);
 $quaternary-col: rgb(0, 0, 128);
+
 $calc-txt-col: rgb(10, 10, 10);
+$shadow-col: rgb(50, 50, 50);
+
+$btn-col: $primary-col;
+$btn-txt-col: $secondary-col;
+
+$result-col: $shadow-col;
+$submit-result-col: $quaternary-col;
+$result-txt-col: $tertiary-col;
+
 $link-col: rgb(100, 100, 100);
 $link-visited-col: rgb(192, 192, 192);
 $link-hover-col: rgb(150, 150, 150);
 $link-active-col: rgb(70, 70, 100);
-$shadow-col: rgb(50, 50, 50);
+
+//dark theme colors
+$primary-col-dark: rgb(10, 10, 10);
+$secondary-col-dark: rgb(230, 230, 230);
+$tertiary-col-dark: rgb(50, 50, 50);
+$quaternary-col-dark: rgb(0, 0, 128);
+
+$calc-txt-col-dark: $secondary-col-dark;
+$shadow-col-dark: rgb(50, 50, 50);
+
+$btn-col-dark: $primary-col-dark;
+$btn-txt-col-dark: $secondary-col-dark;
+
+$result-col-dark: rgb(70, 70, 70);
+$submit-result-col-dark: $quaternary-col-dark;
+$result-txt-col-dark: $secondary-col-dark;
+
+$link-col-dark: rgb(100, 100, 100);
+$link-visited-col-dark: rgb(192, 192, 192);
+$link-hover-col-dark: rgb(150, 150, 150);
+$link-active-col-dark: rgb(70, 70, 100);
