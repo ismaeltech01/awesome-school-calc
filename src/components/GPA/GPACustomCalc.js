@@ -161,8 +161,8 @@ const GPAScale = ({display, onchange, onBackClick, gpaScale, handleCreateSubmit}
               return (<ScaleListItem key={gpa} gpa={gpa} onchange={onchange} value={grade}/>);
             })}
           </ul>
-          <button type="button" id="back-btn" onClick={onBackClick}>Back</button>
-          <button type="submit" id="submit-button">Create Calc</button>
+          <button type="button" id="back-btn" className={theme} onClick={onBackClick}>Back</button>
+          <button type="submit" id="submit-btn" className={theme}>Create Calc</button>
         </form>
       </Calc>
     );

@@ -7,7 +7,7 @@ const CalcHeader = ({txt, navTo}) => {
   const {theme} = useContext(ThemeContext);
 
   return(
-    <Container name="calc-header">
+    <Container id="calc-header">
       <NavLink id='calc-back-btn' className={theme} to={navTo}>Back</NavLink>
       <h2 id="calc-h-txt" className={theme}>{txt}</h2>
     </Container>

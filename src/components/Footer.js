@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Container } from ".";
 import { ThemeContext } from "./themeContext";
 
 export default function Footer() {

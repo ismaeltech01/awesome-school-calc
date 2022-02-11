@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../themeContext";
 import FormListItem from "./FormListItem";
 
 const CalcForm = ({onsubmit, onchange, itemData, helpData, submitText, extraBtn, extraBtnText, onBackClick} ) => {
+  const {theme} = useContext(ThemeContext);
 
   if (typeof extraBtn !== 'boolean' || !extraBtn)
     return(
@@ -14,7 +16,7 @@ const CalcForm = ({onsubmit, onchange, itemData, helpData, submitText, extraBtn,
             ))
           }
         </ul>
-        <button type="submit" id="submit-button">{submitText}</button>
+        <button type="submit" id="submit-btn" className={theme}>{submitText}</button>
       </form>
     );
 
@@ -29,8 +31,8 @@ const CalcForm = ({onsubmit, onchange, itemData, helpData, submitText, extraBtn,
             ))
           }
         </ul>
-        <button type="button" id="back-btn" onClick={onBackClick}>{extraBtnText}</button>
-        <button type="submit" id="submit-button">{submitText}</button>
+        <button type="button" id="back-btn" className={theme} onClick={onBackClick}>{extraBtnText}</button>
+        <button type="submit" id="submit-btn" className={theme}>{submitText}</button>
       </form>
     );
 }

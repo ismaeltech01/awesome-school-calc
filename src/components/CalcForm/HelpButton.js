@@ -10,7 +10,7 @@ const HelpButton = (props) => {
   }
 
   return(
-    <button type="button" id="help-button" className={theme} name={`${itemName}-hp`} onClick={handleClick.bind(this)} title="Help">?</button>
+    <button type="button" id="help-btn" className={theme} name={`${itemName}-hp`} onClick={handleClick.bind(this)} title="Help">?</button>
   );
 }
 

@@ -10,7 +10,7 @@ export default function InitialQuestion() {
     <div id="init-q-body" className={theme}>
       <div id="init-q-els" className={theme}>
         <h2 id="init-q-head" className={theme}>Select Calculator Type:</h2>
-        <Container>
+        <Container id="calc-types">
           <NavLink id="calc-option" className={theme} to="/semester-exam">Semester Exam</NavLink>
           <NavLink id="calc-option" className={theme} to="/test-grade">Test Grade</NavLink>
           <NavLink id='calc-option' className={theme} to='/gpa'>GPA Calc</NavLink>

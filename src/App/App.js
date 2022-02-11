@@ -1,5 +1,5 @@
 import '../css/styles';
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc} from '../components';
 import { ThemeContext } from '../components/themeContext';
@@ -29,8 +29,10 @@ class App extends React.Component {
 export default App;
 
 const AppContent = () => {
+  const {theme} = useContext(ThemeContext);
+
   return(
-    <div className="App">
+    <div id="App" className={theme}>
       <Router>
         <Header/>
         <Routes>

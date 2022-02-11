@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import calculateGradeNeeded from "./logic";
-import { Calc, CalcForm, CalcHeader, Results} from "..";
+import { Calc, CalcForm, CalcHeader, Results, SemResultTxt} from "..";
 
 export default class SemesterExam extends React.Component {
   constructor(props) {
@@ -73,7 +73,9 @@ export default class SemesterExam extends React.Component {
       <Calc>
         <CalcHeader txt='Semester Exam' navTo='/'/>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
-        <Results usrSubmit={this.state.usrSubmit} desiredGrade={this.state.desiredGrade} gradeNeeded={this.state.gradeNeeded}/>
+        <Results>
+          <SemResultTxt usrSubmit={this.state.usrSubmit} desiredClassAvg={this.state.desiredClassAvg} gradeNeeded={this.state.gradeNeeded}/>
+        </Results>
       </Calc>
     );
   }

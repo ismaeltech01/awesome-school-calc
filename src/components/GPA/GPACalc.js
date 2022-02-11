@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { HelpButton, CalcHeader, Calc, Container } from "..";
+import { HelpButton, CalcHeader, Container } from "..";
 import { ThemeContext } from "../themeContext";
 
 export default function GPACalc() {
@@ -15,14 +15,14 @@ export default function GPACalc() {
     <div id="calc-body" className={theme}>
       <Container id="gpa-head">
         <CalcHeader navTo='/' txt='GPA Calc'/>
-        <Container name="label-and-help">
+        <Container id="label-and-help">
           <label id="txt-field-label" htmlFor="gpa-calc-type">Select GPA calculator type:</label>
           <HelpButton itemName='gpa-calc' msg={helpMsg}/>
         </Container>
-        <Container name="gpa-calc-types">
-          <NavLink id="gpa-calc-option" to="/gpa/weighted">Weighted GPA</NavLink>
-          <NavLink id="gpa-calc-option" to="/gpa/un-weighted">Un-Weighted GPA</NavLink>
-          <NavLink id="gpa-calc-option" to="/gpa/custom">Custom</NavLink>
+        <Container id="gpa-calc-types">
+          <NavLink id="gpa-calc-option" className={theme} to="/gpa/weighted">Weighted GPA</NavLink>
+          <NavLink id="gpa-calc-option" className={theme} to="/gpa/un-weighted">Un-Weighted GPA</NavLink>
+          <NavLink id="gpa-calc-option" className={theme} to="/gpa/custom">Custom</NavLink>
         </Container>
       </Container>
     </div>

@@ -8,7 +8,7 @@ const FormListItem =  ({itemName, text, onchange, minVal, maxVal, inputVal, step
 
   return(
     <li>
-      <Container name="label-and-help">
+      <Container id="label-and-help">
         <label id="txt-field-label" className={theme} htmlFor={itemName}>{text}</label>
         <HelpButton itemName={itemName} msg={helpMsg}/>
       </Container>
