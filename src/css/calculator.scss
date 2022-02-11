@@ -1,11 +1,12 @@
 @import 'variables.scss';
 @import 'animations.scss';
+@import 'mixins.scss';
 
-.calc-body {
-  background-color: $tertiary-col;
+#calc-body {
+  @include colProp(tertiary, background-color);
 }
 
-.calc-els {
+#calc-els {
   opacity: 0;
   background: none;
   animation: slide 1s ease-out 0s forwards;
@@ -19,55 +20,21 @@ button {
   text-align: center;
 }
 
-.calculator-body input {
+#calc-body input {
   padding: .4em;
 }
 
-.label-and-help-container {
+#label-and-help {
   padding: 1em;
 }
 
-#help-button {
-  background-color: $primary-col;
-  color: $secondary-col;
-  box-shadow: .1em .1em .2em $shadow-col;
-  border: none;
-  border-radius: 1em;
-  cursor: help;
+#help-btn {
+  @include button;
+  cursor: help !important;
   padding: .5em 1em;
   margin: 0em 1em;
 }
 
-#submit-button {
-  background-color: $primary-col;
-  color: $secondary-col;
-  font-weight: 600;
-  padding: 1em;
-  border-radius: 1em;
-  margin: 1em;
-  box-shadow: .1em .1em .3em $shadow-col;
-  border: none;
-}
-
-#submit-button:hover {
-  cursor: pointer;
-}
-
-.results {
-  font-weight: 500;
-  padding: 5em;
-}
-
-.submit-result {
-  background-color: $quaternary-col;
-  color: $secondary-col;
-}
-
-.no-submit-result {
-  background-color: $shadow-col;
-  color: $secondary-col;
-}
-
-.results strong {
-  font-weight: 800;
+#submit-btn {
+  @include button;
 }

@@ -1,24 +1,15 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
-.calc-header {
+#calc-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.calc-back-btn {
-  background-color: $primary-col;
-  color: $secondary-col;
-  font-weight: 600;
+#calc-back-btn {
+  @include button;
   padding: .4em;
-  border-radius: 1em;
-  margin: 1em;
-  box-shadow: .1em .1em .3em $shadow-col;
-  border: none;
   width: 10vw;
-}
-  
-.calc-back-btn:hover {
-  cursor: pointer;
 }

@@ -1,43 +1,29 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
 footer {
-  background-color: $primary-col;
   padding: 3em;
+  @include colProp(primary, background-color);
 }
 
-.author-txt {
+#author-txt {
   font-size: 1.2em;
-  color: $secondary-col;
   margin: .5em 1em;
+  @include colProp(secondary, color);
 }
 
-.license-txt {
+#license-txt {
   font-size: .9em;
-  color: $secondary-col;
   margin: .5em 1em;
+  @include colProp(secondary, color);
 }
 
-.notice-txt {
-  color: $secondary-col;
+#notice-txt {
+  @include colProp(secondary, color);
   margin: 2em 1em .2em;
 }
 
 footer a {
   text-decoration: none;
-}
-
-footer a:link {
-  color: $link-col;
-}
-
-footer a:visited {
-  color: $link-visited-col;
-}
-
-footer a:hover {
-  color: $link-hover-col;
-}
-
-footer a:active {
-  color: $link-active-col;
+  @include link;
 }

@@ -1,6 +1,10 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
-.App {
+#App {
   text-align: center;
   overflow: hidden;
+  min-height: 100vh;
+  @include colProp(primary, background-color);
+  @include colProp(calc-txt, color);
 }

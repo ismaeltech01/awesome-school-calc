@@ -1,15 +1,16 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
-header {
-  background-color: $primary-col;
+#header {
   padding: 1.5em;
+  @include colProp(primary, background-color);
 }
 
-.header-txt {
-  color: $secondary-col;
+#header-txt {
+  @include colProp(secondary, color);
 }
 
-.header-sup-txt {
-  color: $tertiary-col;
+#header-sup-txt {
   font-size: .7em;
+  @include colProp(secondary, color);
 }

@@ -1,10 +1,10 @@
 @charset "UTF-8";
 @import 'variables.scss';
+@import 'mixins.scss';
 
 /* Contains global styling applicable to all components */
 
 body {
-  background-color: $primary-col;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -26,20 +26,5 @@ code {
 
 a {
   text-decoration: none;
-}
-
-a:link {
-  color: $link-col;
-}
-
-a:visited {
-  color: $link-visited-col;
-}
-
-a:hover {
-  color: $link-hover-col;
-}
-
-a:active {
-  color: $link-active-col;
+  @include link;
 }

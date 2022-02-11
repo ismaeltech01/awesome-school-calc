@@ -1,52 +1,25 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
-.init-q-body {
-  background-color: $tertiary-col;
+#init-q-body {
   padding: 3em 3em;
+  @include colProp(tertiary, background-color);
 }
 
-.init-q-els {
+#init-q-els {
   animation: appear .5s ease-out 0s forwards;
 }
 
-.init-q-head {
-  color: $primary-col;
+#init-q-head {
   padding: 2em;
 }
 
-#calc-types-container {
-  padding: 1em 1em 2em;
+#calc-types {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #calc-option {
-  color: $secondary-col;
-  padding: 1.5em;
-  margin: 0em 1em;
-  background-color: $primary-col;
-  border-radius: 1.5em;
-  font-weight: 500;
-  box-shadow: .1em .1em .3em $shadow-col;
-}
-
-#calc-option a:link {
-  background-color: $primary-col;
-}
-
-#calc-option a:visited {
-  background-color: $primary-col;
-}
-
-#calc-option:hover {
-  background-color: linear-gradient(300, $primary-col, $tertiary-col);
-}
-
-#calc-option a:active {
-  background-color: $quaternary-col;
-}
-
-#calc-option.active {
-  background-color: $quaternary-col;
+  @include linkBtn;
 }
