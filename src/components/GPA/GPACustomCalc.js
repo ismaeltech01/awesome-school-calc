@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { HelpButton, CalcHeader, CalcForm, Calc, Container, Results, GPAResultTxt } from "..";
+import { HelpButton, CalcHeader, CalcForm, Calc, Container, Results, GPAResultTxt, Notice } from "..";
 import { ThemeContext } from "../themeContext";
 import gradesNeeded, { getGPAScale } from "./logic";
 
@@ -120,7 +120,7 @@ export default class GPACustomCalc extends React.Component {
     return (
       <Calc>
         <CalcHeader navTo='/gpa' txt='Custom GPA'/>
-        <h3 id="calc-notice" className=""><em>Warning: This calc is a work in progress. Unexpected Errors may occur.</em></h3>
+        <Notice>Warning: This calc is a work in progress. Unexpected Errors may occur.</Notice>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
         <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>

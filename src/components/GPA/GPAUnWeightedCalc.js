@@ -1,6 +1,6 @@
 import React from "react";
 import gradesNeeded from "./logic";
-import { Calc, CalcForm, CalcHeader, GPAResultTxt, Results} from "..";
+import { Calc, CalcForm, CalcHeader, GPAResultTxt, Results, Notice} from "..";
 
 export default class GPAWeightedCalc extends React.Component {
   constructor(props) {
@@ -76,7 +76,7 @@ export default class GPAWeightedCalc extends React.Component {
     return (
       <Calc>
         <CalcHeader navTo='/gpa' txt='Un-Weighted GPA'/>
-        <h3 id="calc-notice"><em>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</em></h3>
+        <Notice>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</Notice>
         <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
         <Results>
           <GPAResultTxt desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>

@@ -2,9 +2,11 @@ import React from "react";
 
 const Notice = ({submit, children}) => {
   return(
-    <Container name="results" altName={submit ? 'submit' : 'no-submit'}>
-      {children}
-    </Container>
+    <h3 id="notice">
+      <em>
+        {children}
+      </em>
+    </h3>
   );
 }
 

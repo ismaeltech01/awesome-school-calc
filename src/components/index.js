@@ -22,4 +22,5 @@ export {default as FormListItem} from "./CalcForm/FormListItem";
 export {default as HelpButton} from "./CalcForm/HelpButton";
 export {default as Container} from "./CalcForm/Container";
 export {default as Results} from "./CalcForm/Results";
+export {default as Notice} from "./CalcForm/Notice";
 
