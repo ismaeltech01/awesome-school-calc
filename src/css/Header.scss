@@ -14,3 +14,11 @@
   font-size: .7em;
   @include colProp(secondary, color);
 }
+
+.icon-contain {
+  display: flex;
+  height: inherit;
+  width: inherit;
+  justify-content: center;
+  align-items: center;
+}
