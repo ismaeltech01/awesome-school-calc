@@ -76,8 +76,8 @@ export default class GPAWeightedCalc extends React.Component {
     return (
       <Calc>
         <CalcHeader navTo='/gpa' txt='Un-Weighted GPA'/>
-        <Notice>Warning: This calc will give an estimate that may be off by A LOT of points. Please use the Custom GPA calc if you want an exact calculation.</Notice>
-        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/>
+        <Notice>Warning: This calc will give an estimate that may be off by A LOT of points. If you want a more exact calculation, use the Custom GPA calc.</Notice>
+        <CalcForm onsubmit={this.handleSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData} submitText='Submit'/> 
         <Results>
           <GPAResultTxt desiredGPA={this.state.desiredGPA} gradeNeededEachClass={this.state.gradeNeededEachClass} usrSubmit={this.state.usrSubmit} weighted={false}/>
         </Results>
