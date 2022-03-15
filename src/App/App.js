@@ -7,13 +7,19 @@ import { ThemeContext } from '../components/themeContext';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {theme: 'light', toggleTheme: this.toggleTheme};
+    this.state = {
+      theme: localStorage.getItem('theme_key') !== null ? localStorage.getItem("theme_key") : 'light', 
+      toggleTheme: this.toggleTheme
+    };
   }
 
   toggleTheme = () => {
+    localStorage.setItem('theme_key', this.state.theme === 'light' ? 'dark': 'light');
+
     this.setState(state => ({
       theme: state.theme === 'light' ? 'dark': 'light'
     }));
+    
     console.log(this.state.theme);
   }
 
