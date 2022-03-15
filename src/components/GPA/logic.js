@@ -53,52 +53,6 @@ function convertGPAToGrade(gpa, scale) {
   let convertedGrade = pntsFromLowestGrade + minScaleGrade;
   console.log(convertedGrade);
   return convertedGrade
-
-  // ----- Previously planned code -----
-  // if (gpa >= 2.0 && scale == 'weighted') {
-  //   lowestScaleGPA = 2.0;
-  //   difference = gpa - lowestScaleGPA;
-  //   pntsFrom70 = difference * (30 / 3);
-    
-  //   returnVal = pntsFrom70 + 70;
-  // } else if (gpa >= 2.2 && scale == 'un-weighted') {
-  //   lowestScaleGPA = 2.2;
-  //   difference = gpa - lowestScaleGPA;
-  //   pntsFrom70 = difference * (30 / 1.8);
-    
-  //   returnVal = pntsFrom70 + 70;
-
-  // } else if (typeof scale != 'string') {
-  //   let gpaArr = scale.map(([gpa, grade]) => gpa);
-  //   lowestScaleGPA = Math.min(...gpaArr);
-  //   difference = gpa - lowestScaleGPA;
-  //   pntsFromLowestGrade = 
-
-  //   for (let index = 0; index < scale.length - 1; index++) {
-  //     const el = gpaArr[index];
-  //     const nextEl = gpa[index + 1];
-  //     if (el.gpa === gpa) {
-  //       returnVal = el.grade;
-  //       break;
-  //     }
-  //     if (el.gpa < gpa && nextEl.gpa > gpa) {
-  //       minGPA = el.gpa;
-  //       maxGPA = nextEl.gpa;
-  //       minGrade = el.grade;
-  //       maxGrade = nextEl.grade;
-  //       let gpaDiff = maxGPA - minGPA;
-  //       let gradeDiff = maxGrade - minGrade;
-  //       let pntsFromMinGrade = ;
-  //       returnVal = pntsFromMinGrade + lowestScaleGPA;
-  //       break;
-  //     }
-  //   }
-  // } else {
-  //   returnVal = -1;
-  // }
-
-  // console.log(`Grade: ${returnVal}`);
-  // return returnVal;
 }
 
 export function getGPAScale(minGPA, maxGPA, gpaStep) {
