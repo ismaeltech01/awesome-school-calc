@@ -30,7 +30,7 @@ const Header = () => {
           <header>
             <Container id="header">
               <NavLink to="/">
-                <h1 id='header-txt' className={theme}>Awesome School Calc  <sup id='header-sup-txt' className={theme}>v1.1.1</sup></h1>
+                <h1 id='header-txt' className={theme}>Awesome School Calc  <sup id='header-sup-txt' className={theme}>v1.1.2</sup></h1>
               </NavLink>
               <label>
                 <Switch onChange={toggleTheme} checked={theme === 'light' ? true: false} onColor='#e6e6e6' offColor='#646464' checkedIcon={<SunnyIcon/>} uncheckedIcon={<MoonIcon/>}/>
