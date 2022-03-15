@@ -65,9 +65,9 @@ export default class SemesterExam extends React.Component {
       ["desired-average", "Desired Final semester average:", '0', '110', this.state.desiredGrade, '.01']
     ];
     let helpData = [
-      'Your current semester average before taking into account the semester exam. \n\nExample: Before finals, I have a 75 in Metaphysics.',
-      'The effect that the semester exam will have on your final semester grade. \n\nExample: Your class grade at the end of the semester is 85, which will account for 75% of your final semester average. This means that the semester exam will have a 25% effect on your final semester average.',
-      'The semester average that you desire to achieve after taking into consideration ALL of your grades. (includes the semester exam and your normal semester grade) \n\n Example: I got a 99% in Curry studies and a 90% on the final exam, which means that I received a total grade of 97.2'
+      'Your current semester average before taking into account the semester exam.',
+      'The effect that the semester exam will have on your final semester grade, as a percentage (without the % sign).',
+      'The semester average that you desire to achieve after taking into consideration ALL of your grades. (includes the semester exam and your normal semester grade)'
     ];
     return (
       <Calc>

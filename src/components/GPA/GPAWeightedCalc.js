@@ -1,6 +1,7 @@
 import React from "react";
 import gradesNeeded from "./logic";
-import { Calc, CalcForm, CalcHeader, GPAResults, GPAResultTxt, Results} from "..";
+import { Calc, CalcForm, CalcHeader, GPAResultTxt, Results} from "..";
+import helpData from "./helpData";
 
 export default class GPAWeightedCalc extends React.Component {
   constructor(props) {
@@ -68,10 +69,10 @@ export default class GPAWeightedCalc extends React.Component {
       ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1']
     ];
     let helpData = [
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.'
+      'Your GPA before the calculation takes place.',
+      'The amount of class you have completed before the calculation takes place.',
+      'The GPA you want after taking the classes you are going to take.',
+      'The amount of classes you will take next semester. (assuming each class equals one credit).'
     ];
     return (
       <Calc>

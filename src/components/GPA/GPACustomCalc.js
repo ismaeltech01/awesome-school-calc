@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { HelpButton, CalcHeader, CalcForm, Calc, Container, Results, GPAResultTxt, Notice } from "..";
 import { ThemeContext } from "../themeContext";
 import gradesNeeded, { getGPAScale } from "./logic";
+import helpData from "./helpData";
 
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
@@ -112,16 +113,17 @@ export default class GPACustomCalc extends React.Component {
       ["gpa-scale-step", 'GPA Scale Step:', '0', '1', this.state.gpaScaleStep, '.1'],
     ];
     let helpData = [
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.'
+      'Lowest possible GPA on the scale. (Example: 1.0)',
+      'Highest possible GPA on the scale. (Example: 4.0)',
+      `The amount of increase from one GPA to the next 
+      (Example: a GPA scale with a scale step of .5 would go like this: 
+        1, 1.5, 2, 2.5, 3.0, 3.5, 4.0)`
     ];
     return (
       <Calc>
         <CalcHeader navTo='/gpa' txt='Custom GPA'/>
         <InitialForm display={this.state.displayInitialForm} onsubmit={this.handleNextSubmit} onchange={this.handleChange} itemData={itemData} helpData={helpData}/>
-        <GPAScale display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
+        <GPAScaleForm display={this.state.displayGPAScale} onchange={this.handleScaleChange} gpaScale={this.state.gpaScale} handleCreateSubmit={this.handleCreateSubmit} onBackClick={this.handleBackClick}/>
         <CalculatorBody display={this.state.displayCalcBody} gpaScale={this.state.gpaScale} onBackClick={this.handleBackClick}/>
       </Calc>
       );
@@ -139,10 +141,12 @@ const InitialForm = (props) => {
 }
 
     
-const GPAScale = ({display, onchange, onBackClick, gpaScale, handleCreateSubmit}) => {
+const GPAScaleForm = ({display, onchange, onBackClick, gpaScale, handleCreateSubmit}) => {
   const {theme} = useContext(ThemeContext);
 
-  let helpMsg = '';
+  let helpMsg = `This is the scale used to calculate your GPA. 
+  The numbers on the left are the GPA's on the scale. 
+  You need to enter the equivalent grade for each GPA listed. (Example: 4 == 100, 4 being the GPA and 100 being the grade)`;
 
   if (display)
     return (
@@ -175,7 +179,7 @@ const ScaleListItem = ({gpa, onchange, value}) => {
   return (
     <li>
       <Container name="label-and-help">
-        <label className="scale-li-lbl" htmlFor={gpa}>{gpa}</label>
+        <label id="scale-li-lbl" htmlFor={gpa}>{gpa}</label>
         <input type="number" name="gpa-scale-input" id={gpa} min="0" max="150" onChange={onchange} value={value} step="0.01" required></input>
       </Container>
     </li>
@@ -220,12 +224,7 @@ class CalculatorBody extends React.Component {
       ["desired-gpa", 'Desired GPA:', this.props.lowestScaleGPA, this.props.largestScaleGPA, this.state.desiredGPA, '.1'],
       ["next-semester-classes", 'Amount of classes you will take next semester:', '0', '20', this.state.nextSemClasses, '1'],
     ];
-    let helpData = [
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.',
-      'Help currently unavailable.'
-    ];
+
     if (this.props.display) {
       return (
         <Calc>

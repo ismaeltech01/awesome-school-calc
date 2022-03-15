@@ -6,10 +6,10 @@ import { ThemeContext } from "../themeContext";
 export default function GPACalc() {
   const {theme} = useContext(ThemeContext);
 
-  let helpMsg = `Help currently unavailable.`;
-  // `There are two GPA calculator types:\n 
-  //   - Default: Uses the default settings to calculate GPA. The default settings are:\n GPA Scale: 4.0\n\t4.0 == 100 3.0 == 90, 2.0 == 80, 1.0 == 70, < 1.0 == 0\n\n 
-  //   - Custom: Uses your custom settings that you can set to calculate GPA. Customizable settings include: `;
+  let helpMsg = ` There are 3 GPA calculator types:\n 
+  - Weighted & Un-Weighted: Uses a predetermined scale and calculation. 
+  *Go to schoolcalc.netlify.app/scales for more details on the scales used.  
+  - Custom: Calculate your GPA using your own custom settings.`;
 
   return (
     <div id="calc-body" className={theme}>

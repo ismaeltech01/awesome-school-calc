@@ -65,9 +65,9 @@ export default class TestGrade extends React.Component {
       ["desired-average", "Desired class average after test:", '0', '110', this.state.desiredClassAvg, '.01']
     ];
     let helpData = [
-      'Your current class average before the test is taken. \n\nExample: I had a 95 in Math class the day before the test.',
-      'The overall effect of the test (as a percentage) on your grade. \n\nExample: My next Science test will account for 15% of my final grade for the quarter.',
-      'The class average that you would like to have after the score of the test is accounted for. \n\nExample: I wish I am still passing my Biology class after the test.',
+      'Your current class average before the test is taken.',
+      'The overall effect of the test (as a percentage) on your grade.',
+      'The class average that you would like to have after the score of the test is accounted for.',
     ];
     return (
       <Calc>
