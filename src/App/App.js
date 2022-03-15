@@ -1,7 +1,7 @@
 import '../css/styles';
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc} from '../components';
+import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc, Scales} from '../components';
 import { ThemeContext } from '../components/themeContext';
 
 class App extends React.Component {
@@ -37,6 +37,7 @@ const AppContent = () => {
         <Header/>
         <Routes>
           <Route path="/" element={<InitialQuestion/>}/>
+          <Route path="/scales" element={<Scales/>}/>
           <Route path="/semester-exam" element={<SemesterExam/>}/>
           <Route path="/test-grade" element={<TestGrade/>}/>
           <Route path="/gpa" element={<GPACalc/>}/>

@@ -8,6 +8,7 @@ export {default as GPACalc} from "./GPA/GPACalc";
 export {default as GPAWeightedCalc} from "./GPA/GPAWeightedCalc";
 export {default as GPAUnWeightedCalc} from "./GPA/GPAUnWeightedCalc";
 export {default as GPACustomCalc} from "./GPA/GPACustomCalc";
+export {default as Scales} from "./GPA/Scales";
 
 //Results
 export {default as GPAResultTxt} from "./GPA/ResultTxt";

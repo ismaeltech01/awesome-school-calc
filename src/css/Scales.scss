@@ -1,0 +1,15 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+#gpa-scales {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: auto;
+  padding: 1em;
+  @include colProp(tertiary, background-color);
+}
+
+#calc-h-txt {
+  padding: 0em 1em .5em;
+}

@@ -10,3 +10,4 @@ import './SemesterExam.scss';
 import './TestGrade.scss';
 import './CalcHeader.scss';
 import './Results.scss';
+import './Scales.scss';
