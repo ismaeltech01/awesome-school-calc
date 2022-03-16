@@ -25,3 +25,5 @@ export {default as Container} from "./CalcForm/Container";
 export {default as Results} from "./CalcForm/Results";
 export {default as Notice} from "./CalcForm/Notice";
 
+//Error components
+export {default as Error404} from "./Error404";

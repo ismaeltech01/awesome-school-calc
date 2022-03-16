@@ -1,0 +1,18 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+#err-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 4em;
+  @include pageBackground;
+}
+
+#err-code {
+  font-size: 5em;
+}
+
+#err-desc {
+  font-size: 2em;
+}

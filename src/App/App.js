@@ -1,7 +1,7 @@
 import '../css/styles';
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc, Scales} from '../components';
+import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc, Scales, Error404} from '../components';
 import { ThemeContext } from '../components/themeContext';
 
 class App extends React.Component {
@@ -50,6 +50,7 @@ const AppContent = () => {
           <Route path="/gpa/weighted" element={<GPAWeightedCalc/>}/>
           <Route path="/gpa/un-weighted" element={<GPAUnWeightedCalc/>}/>
           <Route path="/gpa/custom" element={<GPACustomCalc/>}/>
+          <Route path='*' element={<Error404/>}/>
         </Routes>
       </Router>
       <Footer/>
