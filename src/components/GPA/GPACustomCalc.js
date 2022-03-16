@@ -3,6 +3,7 @@ import { HelpButton, CalcHeader, CalcForm, Calc, Container, Results, GPAResultTx
 import { ThemeContext } from "../themeContext";
 import gradesNeeded, { getGPAScale } from "./logic";
 import helpData from "./helpData";
+import ConsoleHelper from "../../ConsoleHelper";
 
 export default class GPACustomCalc extends React.Component {
   constructor(props) {
@@ -28,9 +29,7 @@ export default class GPACustomCalc extends React.Component {
 
     Object.keys(this.state).forEach((key) => {
       let val = this.state[key];
-      console.log(val);
       if (val != true && val != false) {
-        console.log(key);
         if (val || val.length != 0)
           displayPrompt = true;
       }
@@ -46,7 +45,6 @@ export default class GPACustomCalc extends React.Component {
     let value = e.target.value;
     let id = e.target.id;
     let formId = e.target.form.id;
-    console.log('Form ID:' + formId);
     
     if (this.state.displayInitialForm && !this.state.emptyGPAScale)
       this.setState({gpaScale: [[]], emptyGPAScale: true});
@@ -61,7 +59,7 @@ export default class GPACustomCalc extends React.Component {
     if (id === 'gpa-scale-step')
       this.setState({gpaScaleStep: value});
     
-    console.log(this.state.gpaScale);
+    ConsoleHelper('Current GPA Scale: ' + this.state.gpaScale);
   }
 
   handleScaleChange = (e) => {
@@ -69,7 +67,6 @@ export default class GPACustomCalc extends React.Component {
     let value = e.target.value;
 
     this.setState({gpaScale : this.state.gpaScale.map((item) => {
-      console.log(item);
       return item[0] == id ? [item[0], value] : item;
     })});
   }
@@ -79,7 +76,6 @@ export default class GPACustomCalc extends React.Component {
     
     this.setState({displayGPAScale: false});
     this.setState({displayCalcBody: true});
-    console.log('gpa-scale-form');
   }
 
   handleNextSubmit = (e) => {
@@ -89,7 +85,6 @@ export default class GPACustomCalc extends React.Component {
       this.setState({gpaScale: getGPAScale(this.state.lowestScaleGPA, this.state.largestScaleGPA, this.state.gpaScaleStep), emptyGPAScale: false});
     this.setState({displayInitialForm: false});
     this.setState({displayGPAScale: true});
-    console.log('initial-vals-form');
   }
 
   handleBackClick = (e) => {
@@ -160,7 +155,6 @@ const GPAScaleForm = ({display, onchange, onBackClick, gpaScale, handleCreateSub
               </Container>
             </li>
             {gpaScale.map(([gpa, grade]) => {
-              console.log(gpa);
               return (<ScaleListItem key={gpa} gpa={gpa} onchange={onchange} value={grade}/>);
             })}
           </ul>
@@ -236,7 +230,7 @@ class CalculatorBody extends React.Component {
         </Calc>
       );
     } else {
-      console.log('null return calculator body');
+      ConsoleHelper('null return calculator body');
       return (null);
     }
   }

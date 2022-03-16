@@ -23,9 +23,7 @@ export default class SemesterExam extends React.Component {
 
     Object.keys(this.state).forEach((key, index) => {
       let val = this.state[key];
-      console.log(val);
       if (val != true && val != false) {
-        console.log(key);
         if (val || val.length != 0)
           displayPrompt = true;
       }

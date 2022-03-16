@@ -25,7 +25,6 @@ const Header = () => {
   return (
     <ThemeContext.Consumer>
         {({theme, toggleTheme}) => {
-          console.log({theme, toggleTheme});
         return (
           <header>
             <Container id="header">

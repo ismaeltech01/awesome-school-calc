@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Header, Footer, InitialQuestion, SemesterExam, TestGrade, GPACalc, GPAWeightedCalc, GPAUnWeightedCalc, GPACustomCalc, Scales, Error404} from '../components';
 import { ThemeContext } from '../components/themeContext';
+import ConsoleHelper from '../ConsoleHelper';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends React.Component {
       theme: state.theme === 'light' ? 'dark': 'light'
     }));
     
-    console.log(this.state.theme);
+    ConsoleHelper("Current theme: " + this.state.theme);
   }
 
   render () {

@@ -4,8 +4,7 @@ export function areAllVarsEmpty() {
     if (element === '' || element === null || element === undefined)
       return true;
   });
-  console.log(empty);
-
+  
   if (!empty)
     return false;
   return empty;
@@ -30,8 +29,6 @@ export function roundToTenths(num) {
 
 export function parseStrToNum(...args) {
   return args.map(arg => {
-    //if (arg.indexOf('.') !== -1)
-     //return parseInt(arg);
     return parseFloat(arg);
   });
 }
