@@ -3,7 +3,7 @@
 @import 'mixins.scss';
 
 #calc-body {
-  @include colProp(tertiary, background-color);
+  @include pageBackground;
 }
 
 #calc-els {

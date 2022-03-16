@@ -7,7 +7,7 @@
   justify-content: center;
   flex: auto;
   padding: 1em;
-  @include colProp(tertiary, background-color);
+  @include pageBackground;
 }
 
 #calc-h-txt {

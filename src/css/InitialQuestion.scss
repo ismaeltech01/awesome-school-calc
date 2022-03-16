@@ -3,7 +3,7 @@
 
 #init-q-body {
   padding: 3em 3em;
-  @include colProp(tertiary, background-color);
+  @include pageBackground
 }
 
 #init-q-els {
