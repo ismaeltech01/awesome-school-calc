@@ -7,10 +7,7 @@
 }
 
 #gpa-calc-types {
-  padding: .5em 1em 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include calcTypes;
 }
 
 #gpa-calc-option {

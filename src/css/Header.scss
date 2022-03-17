@@ -2,7 +2,7 @@
 @import 'mixins.scss';
 
 #header {
-  padding: 1.5em;
+  padding: clamp(1em, 10vh, 1.5em);
   @include colProp(primary, background-color);
 }
 
@@ -10,9 +10,13 @@
   @include colProp(secondary, color);
 }
 
-#header-sup-txt {
-  font-size: .7em;
+#header-v-num {
+  font-size: 1.1em;
   @include colProp(secondary, color);
+}
+
+#theme-switch {
+  margin: clamp(.1vh, 3%, 2vh) auto auto;
 }
 
 .icon-contain {
