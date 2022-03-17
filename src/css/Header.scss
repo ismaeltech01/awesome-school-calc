@@ -2,7 +2,7 @@
 @import 'mixins.scss';
 
 #header {
-  padding: clamp(1em, 10vh, 1.5em);
+  padding: clamp(.5em, 8vw, 1.5em);
   @include colProp(primary, background-color);
 }
 

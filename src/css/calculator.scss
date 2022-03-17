@@ -31,8 +31,8 @@ button {
 #help-btn {
   @include button;
   cursor: help !important;
-  padding: .5em 1em;
-  margin: 0em 1em;
+  padding: clamp(.2em, .5vh, .8em) clamp(.5em, 2.5vw, 1em);
+  margin: 0em clamp(.5em, 1vw, 1em);
 }
 
 #submit-btn {

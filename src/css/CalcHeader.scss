@@ -10,6 +10,5 @@
 
 #calc-back-btn {
   @include button;
-  padding: .4em;
-  width: 10vw;
+  padding: clamp(.2em, 1vh, 1em) clamp(1em, 5vw, 2em);
 }

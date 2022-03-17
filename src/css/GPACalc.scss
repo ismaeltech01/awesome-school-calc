@@ -21,4 +21,5 @@
 
 #back-btn {
   @include button;
+  padding: clamp(.5em, 4vh, 1em) clamp(1em, 5vw, 2em);
 }

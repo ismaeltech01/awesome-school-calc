@@ -50,10 +50,11 @@
 }
 
 @mixin button {
+  padding: clamp(.5em, 4vh, 1em) clamp(1em, 5vw, 2em);
+  margin: clamp(.5em, 1vw, 2em);
+  font-size: clamp(1em, 1em, 3em);
   font-weight: 600;
-  padding: 1em;
   border-radius: 1em;
-  margin: 1em;
   border: none;
 
   &.light {
@@ -74,17 +75,9 @@
 }
 
 @mixin linkBtn {
-  padding: clamp(1em, 20vw, 2em);
-  margin: clamp(.5em, 1vw, 2em);
-  border-radius: 1.5em;
-  font-weight: 500;
-  font-size: clamp(1em, 1em, 3em);
+  @include button;
   
   &.light {
-    background-color: $btn-col;
-    color: $btn-txt-col;
-    box-shadow: .1em .1em .3em $shadow-col;
-    
     & a:link {
       background-color: $primary-col;
     }
@@ -102,10 +95,6 @@
   }
   
   &.dark {
-    background-color: $btn-col-dark;
-    color: $btn-txt-col-dark;
-    box-shadow: .1em .1em .3em $shadow-col-dark;
-
     & a:link {
       background-color: $primary-col-dark;
     }
@@ -124,17 +113,34 @@
 }
 
 @mixin link {
-  &:link {
-    color: $link-col;
+  &.light {
+    &:link {
+      color: $link-col;
+    }
+    &:visited {
+      color: $link-visited-col;
+    }
+    &:hover {
+      color: $link-hover-col;
+    }
+    &:active {
+      color: $link-active-col;
+    }
   }
-  &:visited {
-    color: $link-visited-col;
-  }
-  &:hover {
-    color: $link-hover-col;
-  }
-  &:active {
-    color: $link-active-col;
+
+  &.dark {
+    &:link {
+      color: $link-col-dark;
+    }
+    &:visited {
+      color: $link-visited-col-dark;
+    }
+    &:hover {
+      color: $link-hover-col-dark;
+    }
+    &:active {
+      color: $link-active-col-dark;
+    }
   }
 }
 
