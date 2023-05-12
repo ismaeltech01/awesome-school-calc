@@ -5,7 +5,7 @@ import { Calc, CalcForm, CalcHeader, Results, SemResultTxt} from "..";
 export default class SemesterExam extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {semesterAvg: '', percentEffect: '', desiredGrade: '', usrSubmit: false, gradeNeeded: ''};
+    this.state = {semesterAvg: '', percentEffect: '', desiredClassAvg: '', usrSubmit: false, gradeNeeded: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -38,7 +38,7 @@ export default class SemesterExam extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({gradeNeeded: calculateGradeNeeded(this.state.semesterAvg, this.state.percentEffect, this.state.desiredGrade)});
+    this.setState({gradeNeeded: calculateGradeNeeded(this.state.semesterAvg, this.state.percentEffect, this.state.desiredClassAvg)});
     this.setState({usrSubmit: true});
   }
 
@@ -53,14 +53,14 @@ export default class SemesterExam extends React.Component {
     if (id === "percent-effect")
       this.setState({percentEffect : value});
     if (id === "desired-average")
-      this.setState({desiredGrade : value});
+      this.setState({desiredClassAvg : value});
   }
   
   render() {
     let itemData = [
       ["semester-average", "Current Semester Average:", '0', '110', this.state.semesterAvg, '.01'],
       ["percent-effect", "Percentage effect of semester exam on final semester average:", '0', '100', this.state.percentEffect, '.01'],
-      ["desired-average", "Desired Final semester average:", '0', '110', this.state.desiredGrade, '.01']
+      ["desired-average", "Desired Final semester average:", '0', '110', this.state.desiredClassAvg, '.01']
     ];
     let helpData = [
       'Your current semester average before taking into account the semester exam.',

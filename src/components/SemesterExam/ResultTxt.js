@@ -1,15 +1,15 @@
 //SemesterExam results
 import React from "react";
 
-const ResultTxt = ({usrSubmit, desiredGrade, gradeNeeded}) => {
+const ResultTxt = ({usrSubmit, desiredClassAvg, gradeNeeded}) => {
   if (usrSubmit) {
     if (gradeNeeded !== 0) {
       return (
-        <p>To get a <strong>{desiredGrade}</strong> final semester average, you will need a score of at least <strong>{gradeNeeded}</strong> on the semester exam.</p>
+        <p>To get a <strong>{desiredClassAvg}</strong> final semester average, you will need a score of at least <strong>{gradeNeeded}</strong> on the semester exam.</p>
       );
     } else if (gradeNeeded === 0) {
       return (
-        <p>To get a <strong>{desiredGrade}</strong> final semester average... you don't have to do anything! As long as you don't get a negative average, your good to go!</p>
+        <p>To get a <strong>{desiredClassAvg}</strong> final semester average... you don't have to do anything! As long as you don't get a negative average, your good to go!</p>
       );
     } else {
       return (
